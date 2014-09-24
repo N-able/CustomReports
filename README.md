@@ -1,4 +1,6 @@
-CustomReports
-=============
+Custom Reports
+===============
 
-Custom Reports for Report Manager
+Community contributed custom reports.
+
+See the 'N-Compass' folder for reports built for the N-Compass product, and the 'ReportManager' folder for reports built for the Report Manager product.

@@ -1,0 +1,1101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
+  <DataSources>
+    <DataSource Name="Warehouse">
+      <DataSourceReference>/Models/Warehouse</DataSourceReference>
+      <rd:DataSourceID>6a6a4f28-0906-4956-9287-c645f17638c6</rd:DataSourceID>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+    <DataSource Name="Config">
+      <DataSourceReference>/Reports/config</DataSourceReference>
+      <rd:DataSourceID>6c4d83ed-3523-4abb-bfc4-4daf7eb7eaba</rd:DataSourceID>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsCustomerNames">
+      <Fields>
+        <Field Name="CustomerID">
+          <DataField>Customer ID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Dim_Customer">
+          <DataField>Dim Customer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerName">
+          <DataField>Customer Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Label">
+          <Value>="Customer: "</Value>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Warehouse</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign" xmlns:rb="http://schemas.microsoft.com/sqlserver/2004/11/reportbuilder"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Dim Customer--&gt;
+        &lt;EntityID&gt;G5d2d309e-f4c1-4d62-a323-b632888d2a60&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="Dim Customer"&gt;
+          &lt;Expression Name="Dim Customer"&gt;
+            &lt;EntityRef&gt;
+              &lt;!--Dim Customer--&gt;
+              &lt;EntityID&gt;G5d2d309e-f4c1-4d62-a323-b632888d2a60&lt;/EntityID&gt;
+            &lt;/EntityRef&gt;
+          &lt;/Expression&gt;
+          &lt;Details&gt;
+            &lt;Expression Name="Customer ID"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Customer ID--&gt;
+                &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+            &lt;Expression Name="Customer Name"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Customer Name--&gt;
+                &lt;AttributeID&gt;G673bb9e4-2523-4a2a-8656-76847ac659be&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+          &lt;/Details&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+      &lt;Filter&gt;
+        &lt;Expression Name="expr1"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;AttributeRef&gt;
+                  &lt;!--Customer ID--&gt;
+                  &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+                &lt;/AttributeRef&gt;
+              &lt;/Expression&gt;
+              &lt;Expression&gt;
+                &lt;ParameterRef&gt;
+                  &lt;ParameterName&gt;Customer ID&lt;/ParameterName&gt;
+                &lt;/ParameterRef&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+            &lt;CustomProperty Name="qd:Filter" /&gt;
+            &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;G5d2d309e-f4c1-4d62-a323-b632888d2a60&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+            &lt;CustomProperty Name="qd:AutoChangeBaseEntity" /&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;expr2&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Filter&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+  &lt;CalculatedAttributes&gt;
+    &lt;Expression Name="expr2"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--Customer ID--&gt;
+                    &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;ParameterRef&gt;
+                    &lt;ParameterName&gt;Customer ID&lt;/ParameterName&gt;
+                  &lt;/ParameterRef&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+            &lt;CustomProperties&gt;
+              &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+            &lt;/CustomProperties&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;Null /&gt;
+            &lt;CustomProperties&gt;
+              &lt;CustomProperty Name="qd:Unspecified" /&gt;
+            &lt;/CustomProperties&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:Filter" /&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;G5d2d309e-f4c1-4d62-a323-b632888d2a60&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:AutoChangeBaseEntity" /&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+  &lt;/CalculatedAttributes&gt;
+  &lt;Parameters&gt;
+    &lt;Parameter Name="Customer ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+    &lt;/Parameter&gt;
+  &lt;/Parameters&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="Customer ID">
+            <Value>=Parameters!Customer_ID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="GetBrandingImage">
+      <Fields>
+        <Field Name="HeaderBrandingImageUrl">
+          <DataField>HeaderBrandingImageUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BrandingImageUrl">
+          <DataField>BrandingImageUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LargeBrandingImageUrl">
+          <DataField>LargeBrandingImageUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PoweredByBrandingImageUrl">
+          <DataField>PoweredByBrandingImageUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportingNIconBrandingImageUrl">
+          <DataField>ReportingNIconBrandingImageUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Config</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>GetBrandingImage</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="dataSet">
+      <Fields>
+        <Field Name="DeviceName">
+          <DataField>Device Name</DataField>
+        </Field>
+        <Field Name="OperatingSystem">
+          <DataField>Operating System</DataField>
+        </Field>
+        <Field Name="FactCimPatch">
+          <DataField>Fact Cim Patch</DataField>
+        </Field>
+        <Field Name="Patch">
+          <DataField>Patch</DataField>
+        </Field>
+        <Field Name="expr1">
+          <DataField>expr1</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Warehouse</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rb="http://schemas.microsoft.com/sqlserver/2004/11/reportbuilder" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Fact Cim Patch--&gt;
+        &lt;EntityID&gt;Gfc762f98-86ac-4a59-a471-8cd35e688d3e&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="Device Name"&gt;
+          &lt;Expression Name="Device Name"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G51832fe8-265c-4624-b55d-8d662498a6ef&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Device Name--&gt;
+              &lt;AttributeID&gt;Gc3c246ca-9339-4611-aaaa-690ae9b50d4f&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Operating System"&gt;
+          &lt;Expression Name="Operating System"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G51832fe8-265c-4624-b55d-8d662498a6ef&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Operating System--&gt;
+              &lt;AttributeID&gt;G3c76f36c-bf63-4687-bc11-e856e1128a1e&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Fact Cim Patch"&gt;
+          &lt;Expression Name="Fact Cim Patch"&gt;
+            &lt;EntityRef&gt;
+              &lt;!--Fact Cim Patch--&gt;
+              &lt;EntityID&gt;Gfc762f98-86ac-4a59-a471-8cd35e688d3e&lt;/EntityID&gt;
+            &lt;/EntityRef&gt;
+          &lt;/Expression&gt;
+          &lt;Details&gt;
+            &lt;Expression Name="Patch"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Description--&gt;
+                &lt;AttributeID&gt;G0dc9cabe-474e-448f-8cb9-695f3c626523&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+            &lt;Expression Name="expr1"&gt;
+              &lt;Path&gt;
+                &lt;RolePathItem&gt;
+                  &lt;!--Device--&gt;
+                  &lt;RoleID&gt;G51832fe8-265c-4624-b55d-8d662498a6ef&lt;/RoleID&gt;
+                &lt;/RolePathItem&gt;
+              &lt;/Path&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Device ID--&gt;
+                &lt;AttributeID&gt;G6408a2ed-ed27-4df4-bee5-5c25dd32976c&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+          &lt;/Details&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+      &lt;Filter&gt;
+        &lt;Expression Name="expr2"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Path&gt;
+                        &lt;RolePathItem&gt;
+                          &lt;!--Customer--&gt;
+                          &lt;RoleID&gt;G2d795851-a185-45c8-99ce-2f3b8da0b93c&lt;/RoleID&gt;
+                        &lt;/RolePathItem&gt;
+                      &lt;/Path&gt;
+                      &lt;AttributeRef&gt;
+                        &lt;!--Customer ID--&gt;
+                        &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+                      &lt;/AttributeRef&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;ParameterRef&gt;
+                        &lt;ParameterName&gt;Customer ID&lt;/ParameterName&gt;
+                      &lt;/ParameterRef&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+                &lt;CustomProperties&gt;
+                  &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                &lt;/CustomProperties&gt;
+              &lt;/Expression&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Path&gt;
+                              &lt;RolePathItem&gt;
+                                &lt;!--Device--&gt;
+                                &lt;RoleID&gt;G51832fe8-265c-4624-b55d-8d662498a6ef&lt;/RoleID&gt;
+                              &lt;/RolePathItem&gt;
+                            &lt;/Path&gt;
+                            &lt;AttributeRef&gt;
+                              &lt;!--Status--&gt;
+                              &lt;AttributeID&gt;Gedab4297-8300-435c-af1d-273f1fcf6db8&lt;/AttributeID&gt;
+                            &lt;/AttributeRef&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;Literal&gt;
+                              &lt;DataType&gt;String&lt;/DataType&gt;
+                              &lt;Value&gt;Active&lt;/Value&gt;
+                            &lt;/Literal&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                      &lt;CustomProperties&gt;
+                        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                      &lt;/CustomProperties&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Path&gt;
+                              &lt;RolePathItem&gt;
+                                &lt;!--Device--&gt;
+                                &lt;RoleID&gt;G51832fe8-265c-4624-b55d-8d662498a6ef&lt;/RoleID&gt;
+                              &lt;/RolePathItem&gt;
+                            &lt;/Path&gt;
+                            &lt;AttributeRef&gt;
+                              &lt;!--Is Managed Device Indicator--&gt;
+                              &lt;AttributeID&gt;G5ec54c18-778f-4100-86ca-aaef449c61ed&lt;/AttributeID&gt;
+                            &lt;/AttributeRef&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;Literal&gt;
+                              &lt;DataType&gt;String&lt;/DataType&gt;
+                              &lt;Value&gt;Managed Device&lt;/Value&gt;
+                            &lt;/Literal&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                      &lt;CustomProperties&gt;
+                        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                      &lt;/CustomProperties&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Filter" /&gt;
+            &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;Gfc762f98-86ac-4a59-a471-8cd35e688d3e&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+            &lt;CustomProperty Name="qd:AutoChangeBaseEntity" /&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;expr3&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Filter&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+  &lt;Parameters&gt;
+    &lt;Parameter Name="Customer ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+    &lt;/Parameter&gt;
+  &lt;/Parameters&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="Customer ID">
+            <Value>=Parameters!Customer_ID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Body>
+    <ReportItems>
+      <Image Name="img_PatchOverview_HeadingImage">
+        <Source>External</Source>
+        <Value>=Parameters!HeaderImage.Value</Value>
+        <Height>0.5in</Height>
+        <Width>7.625in</Width>
+        <Visibility>
+          <Hidden>=iif(Code.PageNumber()=1,(iif(Parameters!HeaderImage.Value=nothing,true,false)),true)</Hidden>
+        </Visibility>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style />
+      </Image>
+      <Textbox Name="txt_PatchOverview_ReportTitle">
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Patch Overview</Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>#666666</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <Top>0.56944in</Top>
+        <Height>0.75cm</Height>
+        <Width>14.2875cm</Width>
+        <ZIndex>1</ZIndex>
+        <DataElementOutput>Output</DataElementOutput>
+        <Style>
+          <PaddingLeft>5pt</PaddingLeft>
+          <PaddingRight>1pt</PaddingRight>
+          <PaddingTop>1pt</PaddingTop>
+          <PaddingBottom>1pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Image Name="img_PatchOverview_BrandingImage">
+        <Source>External</Source>
+        <Value>=First(Fields!BrandingImageUrl.Value,"GetBrandingImage")</Value>
+        <Sizing>Fit</Sizing>
+        <Top>0.625in</Top>
+        <Left>6in</Left>
+        <Height>0.375in</Height>
+        <Width>1.5in</Width>
+        <ZIndex>2</ZIndex>
+        <Style />
+      </Image>
+      <Tablix Name="tblCustomerName_Header">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>2.18098in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.15748in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="txt_PatchOverview_CustomerReportHeader">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!CustomerName.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Color>#666666</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <DataElementName>CustomerName</DataElementName>
+                      <Style>
+                        <PaddingLeft>3pt</PaddingLeft>
+                        <PaddingRight>1pt</PaddingRight>
+                        <PaddingTop>1pt</PaddingTop>
+                        <PaddingBottom>1pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="table7_Details_Group">
+                <DataElementName>Detail</DataElementName>
+              </Group>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+              <DataElementName>Detail_Collection</DataElementName>
+              <DataElementOutput>Output</DataElementOutput>
+              <KeepTogether>true</KeepTogether>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>dsCustomerNames</DataSetName>
+        <Top>2.37278cm</Top>
+        <Left>5.47619cm</Left>
+        <Height>0.4cm</Height>
+        <Width>5.53969cm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <VerticalAlign>Middle</VerticalAlign>
+          <Color>#666666</Color>
+          <PaddingLeft>10pt</PaddingLeft>
+          <PaddingRight>1pt</PaddingRight>
+          <PaddingTop>1pt</PaddingTop>
+          <PaddingBottom>1pt</PaddingBottom>
+        </Style>
+      </Tablix>
+      <Tablix Name="tbl_PatchOverview_PatchListByDevice">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1.58333in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.70833in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>4.20833in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="DeviceName_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!DeviceName.Value</SortExpression>
+                        <SortExpressionScope>table_DeviceName</SortExpressionScope>
+                      </UserSort>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Device Name</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>#c0c0c0</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#666666</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="OperatingSystem_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!OperatingSystem.Value</SortExpression>
+                        <SortExpressionScope>table_OperatingSystem</SortExpressionScope>
+                      </UserSort>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Operating System</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>#c0c0c0</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#666666</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Description_Header">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Patch.Value</SortExpression>
+                        <SortExpressionScope>table_FactCimPatch</SortExpressionScope>
+                      </UserSort>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Patch</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>#c0c0c0</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#666666</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.19685in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="DeviceName_Value">
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_DeviceName</HideDuplicates>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!DeviceName.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <ActionInfo>
+                        <Actions>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=DataSources!Warehouse.DataSourceReference</ReportName>
+                              <Parameters>
+                                <Parameter Name="rs:EntityID">
+                                  <Value>G6c48e04d-491a-4ff0-804e-085c29cf12cd</Value>
+                                </Parameter>
+                                <Parameter Name="rs:DrillType">
+                                  <Value>Detail</Value>
+                                </Parameter>
+                                <Parameter Name="rs:Command">
+                                  <Value>Drillthrough</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughSourceQuery">
+                                  <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                                </Parameter>
+                                <Parameter Name="DrillthroughContext">
+                                  <Value>=CreateDrillthroughContext()</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                        </Actions>
+                      </ActionInfo>
+                      <DataElementName>DeviceName</DataElementName>
+                      <Style>
+                        <Border>
+                          <Color>#c0c0c0</Color>
+                        </Border>
+                        <BottomBorder>
+                          <Style>=Iif( RowNumber("table_DeviceName") = CountRows("table_DeviceName"), "Solid", Nothing)</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="OperatingSystem_Value">
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_OperatingSystem</HideDuplicates>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!OperatingSystem.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <DataElementName>OperatingSystem</DataElementName>
+                      <Style>
+                        <Border>
+                          <Color>#c0c0c0</Color>
+                        </Border>
+                        <BottomBorder>
+                          <Style>=Iif( RowNumber("table_OperatingSystem") = CountRows("table_OperatingSystem"), "Solid", Nothing)</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Description_Value">
+                      <CanGrow>true</CanGrow>
+                      <CanShrink>true</CanShrink>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Patch.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Language>en-US</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <DataElementName>PatchName</DataElementName>
+                      <Style>
+                        <Border>
+                          <Color>#c0c0c0</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Top</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <FixedData>true</FixedData>
+              <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
+              <KeepTogether>true</KeepTogether>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="table_DeviceName">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!DeviceName.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!DeviceName.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="table_OperatingSystem">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!OperatingSystem.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=IIf(True, Fields!OperatingSystem.Value, Nothing)</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="table_FactCimPatch">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!FactCimPatch.Value</GroupExpression>
+                        </GroupExpressions>
+                        <DataElementName>Detail</DataElementName>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!Patch.Value</Value>
+                        </SortExpression>
+                        <SortExpression>
+                          <Value>=IIf(True, Fields!expr1.Value, Nothing)</Value>
+                          <Direction>Descending</Direction>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixMembers>
+                        <TablixMember />
+                      </TablixMembers>
+                      <DataElementName>Detail_Collection</DataElementName>
+                      <DataElementOutput>Output</DataElementOutput>
+                      <KeepTogether>true</KeepTogether>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <NoRowsMessage>No data was found that matched your report criteria.</NoRowsMessage>
+        <DataSetName>dataSet</DataSetName>
+        <Top>1.52083in</Top>
+        <Left>0in</Left>
+        <Height>0.44685in</Height>
+        <Width>7.49999in</Width>
+        <ZIndex>4</ZIndex>
+        <Style />
+      </Tablix>
+      <Textbox Name="txt_PatchOverview_CustomerLabelHeader">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Customer:</Value>
+                <Style>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>#666666</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>2.37278cm</Top>
+        <Height>0.4cm</Height>
+        <Width>5.39683cm</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>5pt</PaddingLeft>
+          <PaddingRight>1pt</PaddingRight>
+          <PaddingTop>1pt</PaddingTop>
+          <PaddingBottom>1pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Rectangle Name="txt_PatchOverview_TitleBar">
+        <ReportItems>
+          <Textbox Name="txt_PatchOverview_Title">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>This reports lists all installed patches on devices on the customer's network.</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.09375cm</Top>
+            <Left>0.31746cm</Left>
+            <Height>0.4375cm</Height>
+            <Width>13.0175cm</Width>
+            <Style>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>1pt</PaddingRight>
+              <PaddingTop>1pt</PaddingTop>
+              <PaddingBottom>1pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>2.94917cm</Top>
+        <Height>0.625cm</Height>
+        <Width>7.5in</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Color>#d5d4d9</Color>
+            <Style>Solid</Style>
+          </Border>
+          <BackgroundColor>#f6f6f8</BackgroundColor>
+        </Style>
+      </Rectangle>
+    </ReportItems>
+    <Height>2.23959in</Height>
+    <Style />
+  </Body>
+  <ReportParameters>
+    <ReportParameter Name="Customer_ID">
+      <DataType>String</DataType>
+      <Prompt>Customer:</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="HeaderImage">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>GetBrandingImage</DataSetName>
+          <ValueField>HeaderBrandingImageUrl</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Header Image</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="FooterImage">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>GetBrandingImage</DataSetName>
+          <ValueField>PoweredByBrandingImageUrl</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>FooterImage</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function PageNumber()
+ Dim str as String
+ str = me.Report.Globals!PageNumber.ToString()
+ Return str
+End Function
+
+Public Function TotalPages()
+ Dim str as String
+ str = me.Report.Globals!TotalPages.ToString()
+ Return str
+End Function</Code>
+  <Width>7.625in</Width>
+  <Page>
+    <PageFooter>
+      <Height>0.43333in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="txt_PatchOverview_ReportPageNumber">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>="Page " &amp; Globals!PageNumber</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.18333in</Top>
+          <Left>3.4375in</Left>
+          <Height>0.31746cm</Height>
+          <Width>0.625in</Width>
+          <Style>
+            <Border>
+              <Color>#666666</Color>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+        </Textbox>
+        <Image Name="img_PatchOverview_FooterImage">
+          <Source>External</Source>
+          <Value>=Parameters!FooterImage.Value</Value>
+          <Sizing>Fit</Sizing>
+          <Top>0.46567cm</Top>
+          <Left>15.87302cm</Left>
+          <Height>0.31746cm</Height>
+          <Width>1.25078in</Width>
+          <ZIndex>1</ZIndex>
+          <Visibility>
+            <Hidden>=iif(Code.PageNumber()=Code.TotalPages(),(iif(Parameters!FooterImage.Value=nothing,true,false)),true)</Hidden>
+          </Visibility>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style />
+        </Image>
+      </ReportItems>
+      <Style />
+    </PageFooter>
+    <LeftMargin>0.5in</LeftMargin>
+    <RightMargin>0.5in</RightMargin>
+    <TopMargin>0.5in</TopMargin>
+    <BottomMargin>0.5in</BottomMargin>
+    <Style />
+  </Page>
+  <EmbeddedImages>
+    <EmbeddedImage Name="powered_by_nable_120x12">
+      <MIMEType>image/gif</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="logo_160x40">
+      <MIMEType>image/gif</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportID>75539200-9cea-4391-a153-22e9d2e0c033</rd:ReportID>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://localhost/reportserver</rd:ReportServerUrl>
+</Report>

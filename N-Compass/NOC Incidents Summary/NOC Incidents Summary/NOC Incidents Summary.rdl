@@ -1,0 +1,1014 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Language>en-US</Language>
+  <rd:GridSpacing>0.125in</rd:GridSpacing>
+  <Width>10in</Width>
+  <TopMargin>0.5in</TopMargin>
+  <BottomMargin>0.5in</BottomMargin>
+  <LeftMargin>0.5in</LeftMargin>
+  <RightMargin>0.5in</RightMargin>
+  <PageWidth>11in</PageWidth>
+  <PageHeight>8.5in</PageHeight>
+  <ReportParameters>
+    <ReportParameter Name="CustomerID">
+      <DataType>Integer</DataType>
+      <Prompt>Customer ID</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>paramDataSet</DataSetName>
+          <ValueField>value</ValueField>
+          <LabelField>value</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="StartTime">
+      <DataType>DateTime</DataType>
+      <Prompt>Start Time</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="StartTime1">
+      <DataType>DateTime</DataType>
+      <Prompt>Start Time1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Body>
+    <Height>0in</Height>
+    <Style />
+    <ReportItems>
+      <Textbox Name="Title">
+        <Value>NOC Incidents Summary</Value>
+        <CanGrow>true</CanGrow>
+        <Width>6.5in</Width>
+        <Height>0.5in</Height>
+        <Left>0.5in</Left>
+        <Top>0.75in</Top>
+        <Style>
+          <FontSize>18pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontStyle>Italic</FontStyle>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>Bold</FontWeight>
+        </Style>
+        <CustomProperties>
+          <CustomProperty>
+            <Name>rb:Watermark</Name>
+            <Value>Click to add title</Value>
+          </CustomProperty>
+        </CustomProperties>
+      </Textbox>
+      <Matrix Name="matrix">
+        <Corner>
+          <ReportItems>
+            <Rectangle Name="matrix_corner">
+              <ReportItems>
+                <Textbox Name="textbox4">
+                  <Value />
+                  <Height>0.25in</Height>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                    <FontSize>8pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <FontFamily>Tahoma</FontFamily>
+                  </Style>
+                </Textbox>
+                <Textbox Name="DeviceName_Header">
+                  <Value>Device Name</Value>
+                  <UserSort>
+                    <SortExpression>=Fields!DeviceName.Value</SortExpression>
+                    <SortExpressionScope>matrix_DeviceName</SortExpressionScope>
+                  </UserSort>
+                  <Width>1.25in</Width>
+                  <Height>0.25in</Height>
+                  <Left>0in</Left>
+                  <Top>0.25in</Top>
+                  <Style>
+                    <Color>White</Color>
+                    <BackgroundColor>#528ae7</BackgroundColor>
+                    <FontSize>8pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <BorderColor>
+                      <Default>#c0c0c0</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                    <Language>en-US</Language>
+                  </Style>
+                </Textbox>
+                <Textbox Name="ServiceServiceName_Header">
+                  <Value>Service</Value>
+                  <UserSort>
+                    <SortExpression>=Fields!Service.Value</SortExpression>
+                    <SortExpressionScope>matrix_ServiceServiceName</SortExpressionScope>
+                  </UserSort>
+                  <Width>1.84845in</Width>
+                  <Height>0.25in</Height>
+                  <Left>1.25in</Left>
+                  <Top>0.25in</Top>
+                  <Style>
+                    <Color>White</Color>
+                    <BackgroundColor>#528ae7</BackgroundColor>
+                    <FontSize>8pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <BorderColor>
+                      <Default>#c0c0c0</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                    <Language>en-US</Language>
+                  </Style>
+                </Textbox>
+              </ReportItems>
+              <Style />
+            </Rectangle>
+          </ReportItems>
+        </Corner>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.25in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix_ColumnGroupsHeader">
+                <GroupExpressions>
+                  <GroupExpression>ColumnGroupsHeader</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox2">
+                  <Value>Incident</Value>
+                  <Style>
+                    <Color>White</Color>
+                    <BackgroundColor>#528ae7</BackgroundColor>
+                    <FontSize>8pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <BorderColor>
+                      <Default>#c0c0c0</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <CustomProperties>
+                    <CustomProperty>
+                      <Name>rb:UserDefinedText</Name>
+                      <Value />
+                    </CustomProperty>
+                  </CustomProperties>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+            <FixedHeader>true</FixedHeader>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.25in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix_Status">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Status.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!StatusStatusName.Value</SortExpression>
+                </SortBy>
+              </Sorting>
+              <Visibility>
+                <Hidden>=Fields!StatusStatusName.IsMissing</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="Status_SubtotalHeader">
+                    <Value>Total</Value>
+                    <CanGrow>true</CanGrow>
+                    <Style>
+                      <Color>White</Color>
+                      <BackgroundColor>#528ae7</BackgroundColor>
+                      <FontSize>8pt</FontSize>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <BorderColor>
+                        <Default>#c0c0c0</Default>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Textbox>
+                </ReportItems>
+                <Style>
+                  <BackgroundColor>White</BackgroundColor>
+                  <FontSize>8pt</FontSize>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                  <BorderColor>
+                    <Default>#c0c0c0</Default>
+                  </BorderColor>
+                  <BorderStyle>
+                    <Default>Solid</Default>
+                  </BorderStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="StatusStatusName_Value">
+                  <Value>=Fields!StatusStatusName.Value</Value>
+                  <Action>
+                    <Drillthrough>
+                      <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                      <Parameters>
+                        <Parameter Name="rs:EntityID">
+                          <Value>G3d413eaa-46d8-4543-8458-7e1134172b9c</Value>
+                        </Parameter>
+                        <Parameter Name="rs:DrillType">
+                          <Value>Detail</Value>
+                        </Parameter>
+                        <Parameter Name="rs:Command">
+                          <Value>Drillthrough</Value>
+                        </Parameter>
+                        <Parameter Name="DrillthroughSourceQuery">
+                          <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                        </Parameter>
+                        <Parameter Name="DrillthroughContext">
+                          <Value>=CreateDrillthroughContext()</Value>
+                        </Parameter>
+                      </Parameters>
+                    </Drillthrough>
+                  </Action>
+                  <Style>
+                    <Color>White</Color>
+                    <BackgroundColor>#528ae7</BackgroundColor>
+                    <FontSize>8pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <BorderColor>
+                      <Default>#c0c0c0</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <Language>en-US</Language>
+                  </Style>
+                  <DataElementOutput>Output</DataElementOutput>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+            <FixedHeader>true</FixedHeader>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>1.25in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix_DeviceName">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!DeviceName.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=SUM(Fields!xFactAvailabilities_Count.Value)</SortExpression>
+                  <Direction>Descending</Direction>
+                </SortBy>
+                <SortBy>
+                  <SortExpression>=IIf(True, Fields!DeviceName.Value, Nothing)</SortExpression>
+                </SortBy>
+              </Sorting>
+              <Visibility>
+                <Hidden>=Fields!DeviceName.IsMissing</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="DeviceName_SubtotalHeader">
+                    <Value>Total</Value>
+                    <CanGrow>true</CanGrow>
+                    <Style>
+                      <BackgroundColor>#c6dbff</BackgroundColor>
+                      <FontSize>8pt</FontSize>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <BorderColor>
+                        <Default>#c0c0c0</Default>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </Textbox>
+                </ReportItems>
+                <Style>
+                  <BackgroundColor>#c6dbff</BackgroundColor>
+                  <FontSize>8pt</FontSize>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                  <BorderColor>
+                    <Default>#c0c0c0</Default>
+                  </BorderColor>
+                  <BorderStyle>
+                    <Default>Solid</Default>
+                  </BorderStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="DeviceName_Value">
+                  <Value>=Fields!DeviceName.Value</Value>
+                  <CanGrow>true</CanGrow>
+                  <Action>
+                    <Drillthrough>
+                      <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                      <Parameters>
+                        <Parameter Name="rs:EntityID">
+                          <Value>G6c48e04d-491a-4ff0-804e-085c29cf12cd</Value>
+                        </Parameter>
+                        <Parameter Name="rs:DrillType">
+                          <Value>Detail</Value>
+                        </Parameter>
+                        <Parameter Name="rs:Command">
+                          <Value>Drillthrough</Value>
+                        </Parameter>
+                        <Parameter Name="DrillthroughSourceQuery">
+                          <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                        </Parameter>
+                        <Parameter Name="DrillthroughContext">
+                          <Value>=CreateDrillthroughContext()</Value>
+                        </Parameter>
+                      </Parameters>
+                    </Drillthrough>
+                  </Action>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                    <FontSize>8pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <BorderColor>
+                      <Default>#c0c0c0</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontFamily>Tahoma</FontFamily>
+                    <Language>en-US</Language>
+                  </Style>
+                  <DataElementOutput>Output</DataElementOutput>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+            <FixedHeader>true</FixedHeader>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>1.84845in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix_ServiceServiceName">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Service.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=SUM(Fields!xFactAvailabilities_Count.Value)</SortExpression>
+                  <Direction>Descending</Direction>
+                </SortBy>
+                <SortBy>
+                  <SortExpression>=IIf(True, Fields!Service.Value, Nothing)</SortExpression>
+                </SortBy>
+              </Sorting>
+              <Visibility>
+                <Hidden>=Fields!Service.IsMissing</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="ServiceServiceName_SubtotalHeader">
+                    <Value>Total</Value>
+                    <CanGrow>true</CanGrow>
+                    <Style>
+                      <BackgroundColor>#c6dbff</BackgroundColor>
+                      <FontSize>8pt</FontSize>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <BorderColor>
+                        <Default>#c0c0c0</Default>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </Textbox>
+                </ReportItems>
+                <Style>
+                  <BackgroundColor>#c6dbff</BackgroundColor>
+                  <FontSize>8pt</FontSize>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                  <BorderColor>
+                    <Default>#c0c0c0</Default>
+                  </BorderColor>
+                  <BorderStyle>
+                    <Default>Solid</Default>
+                  </BorderStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="ServiceServiceName_Value">
+                  <Value>=Fields!Service.Value</Value>
+                  <CanGrow>true</CanGrow>
+                  <Action>
+                    <Drillthrough>
+                      <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                      <Parameters>
+                        <Parameter Name="rs:EntityID">
+                          <Value>G4f1ea74d-35fb-4975-b001-b9b01ae481e3</Value>
+                        </Parameter>
+                        <Parameter Name="rs:DrillType">
+                          <Value>Detail</Value>
+                        </Parameter>
+                        <Parameter Name="rs:Command">
+                          <Value>Drillthrough</Value>
+                        </Parameter>
+                        <Parameter Name="DrillthroughSourceQuery">
+                          <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                        </Parameter>
+                        <Parameter Name="DrillthroughContext">
+                          <Value>=CreateDrillthroughContext()</Value>
+                        </Parameter>
+                      </Parameters>
+                    </Drillthrough>
+                  </Action>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                    <FontSize>8pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <BorderColor>
+                      <Default>#c0c0c0</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontFamily>Tahoma</FontFamily>
+                    <Language>en-US</Language>
+                  </Style>
+                  <DataElementOutput>Output</DataElementOutput>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+            <FixedHeader>true</FixedHeader>
+          </RowGrouping>
+        </RowGroupings>
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>1.03125in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <MatrixRows>
+          <MatrixRow>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="xFactAvailabilities_Value">
+                    <Value>=SUM(Fields!xFactAvailabilities_Count.Value)</Value>
+                    <CanGrow>true</CanGrow>
+                    <Action>
+                      <Drillthrough>
+                        <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                        <Parameters>
+                          <Parameter Name="rs:EntityID">
+                            <Value>G0eb352aa-bc56-4179-a88a-bc22a8a29a71</Value>
+                          </Parameter>
+                          <Parameter Name="rs:DrillType">
+                            <Value>List</Value>
+                          </Parameter>
+                          <Parameter Name="rs:Command">
+                            <Value>Drillthrough</Value>
+                          </Parameter>
+                          <Parameter Name="DrillthroughSourceQuery">
+                            <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                          </Parameter>
+                          <Parameter Name="DrillthroughContext">
+                            <Value>=CreateDrillthroughContext()</Value>
+                          </Parameter>
+                        </Parameters>
+                      </Drillthrough>
+                    </Action>
+                    <Style>
+                      <BackgroundColor>White</BackgroundColor>
+                      <FontSize>8pt</FontSize>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <BorderColor>
+                        <Default>#c0c0c0</Default>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <FontFamily>Tahoma</FontFamily>
+                      <Format>n0</Format>
+                      <TextAlign>Center</TextAlign>
+                      <Language>en-US</Language>
+                    </Style>
+                    <DataElementOutput>Output</DataElementOutput>
+                    <CustomProperties>
+                      <CustomProperty>
+                        <Name>rb:DisplayName</Name>
+                        <Value>#Fact Availabilities</Value>
+                      </CustomProperty>
+                    </CustomProperties>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+            <Height>0.25in</Height>
+          </MatrixRow>
+        </MatrixRows>
+        <NoRows>No data was found that matched your report criteria.</NoRows>
+        <DataSetName>dataSet</DataSetName>
+        <Width>0in</Width>
+        <Height>0in</Height>
+        <Left>0.5in</Left>
+        <Top>2in</Top>
+        <Style />
+      </Matrix>
+      <Textbox Name="textbox5">
+        <Value>This report shows the number of NOC incidents for each device on selected customer's network (in descending order) for specified time period.</Value>
+        <CanGrow>true</CanGrow>
+        <Width>8.25in</Width>
+        <Height>0.25in</Height>
+        <Left>0.5in</Left>
+        <Top>1.375in</Top>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+      </Textbox>
+      <Image Name="image">
+        <Source>Embedded</Source>
+        <Value>ncompass_small</Value>
+        <Sizing>Fit</Sizing>
+        <Width>1.25in</Width>
+        <Height>0.25in</Height>
+        <Left>0.625in</Left>
+        <Top>0.25in</Top>
+        <Style />
+      </Image>
+    </ReportItems>
+  </Body>
+  <DataSources>
+    <DataSource Name="dataSource1">
+      <rd:DataSourceID>baef5034-8e66-4f5e-9ad1-74f542c88cd7</rd:DataSourceID>
+      <DataSourceReference>/Models/Warehouse</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dataSet">
+      <Query>
+        <DataSourceName>dataSource1</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rb="http://schemas.microsoft.com/sqlserver/2004/11/reportbuilder" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Fact Availability--&gt;
+        &lt;EntityID&gt;G0eb352aa-bc56-4179-a88a-bc22a8a29a71&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="Device Name"&gt;
+          &lt;Expression Name="Device Name"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G4e49a841-5cbd-4701-826e-527b56f219c0&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Device Name--&gt;
+              &lt;AttributeID&gt;Gc3c246ca-9339-4611-aaaa-690ae9b50d4f&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Service"&gt;
+          &lt;Expression Name="Service"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Service--&gt;
+                &lt;RoleID&gt;G056c5bff-8ccc-4421-addb-8a1680586274&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Service Name--&gt;
+              &lt;AttributeID&gt;G949d05c0-bb6f-4e26-a906-4d9c55e2d958&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Status"&gt;
+          &lt;Expression Name="Status"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Status--&gt;
+                &lt;RoleID&gt;G86b5f26b-982c-4c95-bbb7-54400f3021a4&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;EntityRef&gt;
+              &lt;!--Dim Status--&gt;
+              &lt;EntityID&gt;G3d413eaa-46d8-4543-8458-7e1134172b9c&lt;/EntityID&gt;
+            &lt;/EntityRef&gt;
+          &lt;/Expression&gt;
+          &lt;Details&gt;
+            &lt;Expression Name="Status Status Name"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Status Name--&gt;
+                &lt;AttributeID&gt;G5cfddb59-9ae9-478d-931b-7e424efb25a4&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+          &lt;/Details&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+      &lt;Filter&gt;
+        &lt;Expression Name="expr1"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Path&gt;
+                        &lt;RolePathItem&gt;
+                          &lt;!--Device--&gt;
+                          &lt;RoleID&gt;G4e49a841-5cbd-4701-826e-527b56f219c0&lt;/RoleID&gt;
+                        &lt;/RolePathItem&gt;
+                      &lt;/Path&gt;
+                      &lt;AttributeRef&gt;
+                        &lt;!--Status--&gt;
+                        &lt;AttributeID&gt;Gedab4297-8300-435c-af1d-273f1fcf6db8&lt;/AttributeID&gt;
+                      &lt;/AttributeRef&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;Literal&gt;
+                        &lt;DataType&gt;String&lt;/DataType&gt;
+                        &lt;Value&gt;Active&lt;/Value&gt;
+                      &lt;/Literal&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+                &lt;CustomProperties&gt;
+                  &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                &lt;/CustomProperties&gt;
+              &lt;/Expression&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Path&gt;
+                              &lt;RolePathItem&gt;
+                                &lt;!--Device--&gt;
+                                &lt;RoleID&gt;G4e49a841-5cbd-4701-826e-527b56f219c0&lt;/RoleID&gt;
+                              &lt;/RolePathItem&gt;
+                            &lt;/Path&gt;
+                            &lt;AttributeRef&gt;
+                              &lt;!--Is Managed Device Indicator--&gt;
+                              &lt;AttributeID&gt;G5ec54c18-778f-4100-86ca-aaef449c61ed&lt;/AttributeID&gt;
+                            &lt;/AttributeRef&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;Literal&gt;
+                              &lt;DataType&gt;String&lt;/DataType&gt;
+                              &lt;Value&gt;Managed Device&lt;/Value&gt;
+                            &lt;/Literal&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                      &lt;CustomProperties&gt;
+                        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                      &lt;/CustomProperties&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Function&gt;
+                              &lt;FunctionName&gt;In&lt;/FunctionName&gt;
+                              &lt;Arguments&gt;
+                                &lt;Expression&gt;
+                                  &lt;Path&gt;
+                                    &lt;RolePathItem&gt;
+                                      &lt;!--Status--&gt;
+                                      &lt;RoleID&gt;G86b5f26b-982c-4c95-bbb7-54400f3021a4&lt;/RoleID&gt;
+                                    &lt;/RolePathItem&gt;
+                                  &lt;/Path&gt;
+                                  &lt;AttributeRef&gt;
+                                    &lt;!--Status Name--&gt;
+                                    &lt;AttributeID&gt;G5cfddb59-9ae9-478d-931b-7e424efb25a4&lt;/AttributeID&gt;
+                                  &lt;/AttributeRef&gt;
+                                &lt;/Expression&gt;
+                                &lt;Expression&gt;
+                                  &lt;Literal&gt;
+                                    &lt;DataType&gt;String&lt;/DataType&gt;
+                                    &lt;Values&gt;
+                                      &lt;Value&gt;Disconnected&lt;/Value&gt;
+                                      &lt;Value&gt;Failed&lt;/Value&gt;
+                                      &lt;Value&gt;Misconfigured&lt;/Value&gt;
+                                      &lt;Value&gt;Warning&lt;/Value&gt;
+                                    &lt;/Values&gt;
+                                  &lt;/Literal&gt;
+                                &lt;/Expression&gt;
+                              &lt;/Arguments&gt;
+                            &lt;/Function&gt;
+                            &lt;CustomProperties&gt;
+                              &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                            &lt;/CustomProperties&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;Function&gt;
+                              &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                              &lt;Arguments&gt;
+                                &lt;Expression&gt;
+                                  &lt;Function&gt;
+                                    &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                                    &lt;Arguments&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Path&gt;
+                                          &lt;RolePathItem&gt;
+                                            &lt;!--Customer--&gt;
+                                            &lt;RoleID&gt;Gae40d5a6-d62b-45af-86e9-ccf9ecdc384c&lt;/RoleID&gt;
+                                          &lt;/RolePathItem&gt;
+                                        &lt;/Path&gt;
+                                        &lt;AttributeRef&gt;
+                                          &lt;!--Customer ID--&gt;
+                                          &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+                                        &lt;/AttributeRef&gt;
+                                      &lt;/Expression&gt;
+                                      &lt;Expression&gt;
+                                        &lt;ParameterRef&gt;
+                                          &lt;ParameterName&gt;Customer ID&lt;/ParameterName&gt;
+                                        &lt;/ParameterRef&gt;
+                                      &lt;/Expression&gt;
+                                    &lt;/Arguments&gt;
+                                  &lt;/Function&gt;
+                                  &lt;CustomProperties&gt;
+                                    &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                  &lt;/CustomProperties&gt;
+                                &lt;/Expression&gt;
+                                &lt;Expression&gt;
+                                  &lt;Function&gt;
+                                    &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                                    &lt;Arguments&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Function&gt;
+                                          &lt;FunctionName&gt;GreaterThanOrEquals&lt;/FunctionName&gt;
+                                          &lt;Arguments&gt;
+                                            &lt;Expression&gt;
+                                              &lt;AttributeRef&gt;
+                                                &lt;!--Start Time--&gt;
+                                                &lt;AttributeID&gt;G67a66fc2-8cf0-4bb4-bea5-2ff07713741d&lt;/AttributeID&gt;
+                                              &lt;/AttributeRef&gt;
+                                            &lt;/Expression&gt;
+                                            &lt;Expression&gt;
+                                              &lt;ParameterRef&gt;
+                                                &lt;ParameterName&gt;Start Time&lt;/ParameterName&gt;
+                                              &lt;/ParameterRef&gt;
+                                            &lt;/Expression&gt;
+                                          &lt;/Arguments&gt;
+                                        &lt;/Function&gt;
+                                        &lt;CustomProperties&gt;
+                                          &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                        &lt;/CustomProperties&gt;
+                                      &lt;/Expression&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Function&gt;
+                                          &lt;FunctionName&gt;LessThanOrEquals&lt;/FunctionName&gt;
+                                          &lt;Arguments&gt;
+                                            &lt;Expression&gt;
+                                              &lt;AttributeRef&gt;
+                                                &lt;!--Start Time--&gt;
+                                                &lt;AttributeID&gt;G67a66fc2-8cf0-4bb4-bea5-2ff07713741d&lt;/AttributeID&gt;
+                                              &lt;/AttributeRef&gt;
+                                            &lt;/Expression&gt;
+                                            &lt;Expression&gt;
+                                              &lt;ParameterRef&gt;
+                                                &lt;ParameterName&gt;Start Time1&lt;/ParameterName&gt;
+                                              &lt;/ParameterRef&gt;
+                                            &lt;/Expression&gt;
+                                          &lt;/Arguments&gt;
+                                        &lt;/Function&gt;
+                                        &lt;CustomProperties&gt;
+                                          &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                        &lt;/CustomProperties&gt;
+                                      &lt;/Expression&gt;
+                                    &lt;/Arguments&gt;
+                                  &lt;/Function&gt;
+                                &lt;/Expression&gt;
+                              &lt;/Arguments&gt;
+                            &lt;/Function&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Filter" /&gt;
+            &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;G0eb352aa-bc56-4179-a88a-bc22a8a29a71&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+            &lt;CustomProperty Name="qd:AutoChangeBaseEntity" /&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;expr2&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Filter&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+  &lt;MeasureGroups&gt;
+    &lt;MeasureGroup&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Fact Availability--&gt;
+        &lt;EntityID&gt;G0eb352aa-bc56-4179-a88a-bc22a8a29a71&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Measures&gt;
+        &lt;Expression Name="#Fact Availabilities_Count"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;Count&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;EntityRef&gt;
+                  &lt;!--Fact Availability--&gt;
+                  &lt;EntityID&gt;G0eb352aa-bc56-4179-a88a-bc22a8a29a71&lt;/EntityID&gt;
+                &lt;/EntityRef&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;#Fact Availabilities&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Measures&gt;
+    &lt;/MeasureGroup&gt;
+  &lt;/MeasureGroups&gt;
+  &lt;CalculatedAttributes&gt;
+    &lt;Expression Name="#Fact Availabilities"&gt;
+      &lt;AttributeRef&gt;
+        &lt;!--#Fact Availabilities--&gt;
+        &lt;AttributeID&gt;G8ee047a1-30bf-4653-8ea2-7be9c6ca7c75&lt;/AttributeID&gt;
+      &lt;/AttributeRef&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;G0eb352aa-bc56-4179-a88a-bc22a8a29a71&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+  &lt;/CalculatedAttributes&gt;
+  &lt;Parameters&gt;
+    &lt;Parameter Name="Customer ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Start Time"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Start Time1"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+    &lt;/Parameter&gt;
+  &lt;/Parameters&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="Customer ID">
+            <Value>=Parameters!CustomerID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Start Time">
+            <Value>=Parameters!StartTime.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Start Time1">
+            <Value>=Parameters!StartTime1.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+      <Fields>
+        <Field Name="DeviceName">
+          <DataField>Device Name</DataField>
+        </Field>
+        <Field Name="Service">
+          <DataField>Service</DataField>
+        </Field>
+        <Field Name="Status">
+          <DataField>Status</DataField>
+        </Field>
+        <Field Name="StatusStatusName">
+          <DataField>Status Status Name</DataField>
+        </Field>
+        <Field Name="xFactAvailabilities_Count">
+          <DataField>#Fact Availabilities_Count</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="paramDataSet">
+      <Query>
+        <DataSourceName>dataSource1</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Dim Customer--&gt;
+        &lt;EntityID&gt;G5d2d309e-f4c1-4d62-a323-b632888d2a60&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="value"&gt;
+          &lt;Expression Name="value"&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Customer ID--&gt;
+              &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="value">
+          <DataField>value</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <EmbeddedImages>
+    <EmbeddedImage Name="ncompass_small">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>/9j/4AAQSkZJRgABAQEAYABgAAD/4QAiRXhpZgAASUkqAAgAAAABAABRBAABAAAAAAAAAAAAAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAUAHgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDL+LV7Le/Em7WAuzWcUcalOq7V3kjHoSee2K9P8FfERNc8F31xduP7U0u2eS4HTzFVSRIB7459/YiuI8CIviL40anfyKJIka5nw3I2k+WB78PWN8QvCt14G16W
+XTnkj0vUEdI2U8BW+/E39M9sdwa6mk7QZzJtXmjo/gXAqXOu6tcPtWKOOPex67iWb/0EfnXpz+MLUOdltO0YON/Arj/A7WkfwhgeKw8p5pWSV1AzI4c/OT3HGPwxXUQatpVn4ft4GRZ2YDzIcd85JOayqaybNaatFGxNr2nwWcVy8p2yjKKBlj68Ull4gsL6UxxuyOATiRcZA64rnFa2bxUhu41t7dQCkcihQvy5AI6Dk5qtrNzHcavNPZAeXGgBdBwe2f1xUcpVzrdP12z1OdoYBIGVC53rgYyB6+9V/wDhKdOLuo84hMksFGMD8a5WIz2LIkCnzbu3CDHX5m/wFV5Y1gFyqkEBhFn15ySPxX9afKgudjH4r0x3CkyoD/EycD8qsX2v2On3IglLl8AnYMgZ9ea5u40y+XR4GvJYY7OBd6qv3ju5x0681lSSLNbyyyrIbh5AVbHyhcHIz+X5UWQXZ3+oata6ZsE7MXf7qIMk1HZ67YXnmhZGjaJSzLIMEAdTXPXr2uqz2hjujb3scK/NJ8qdNw+bseajtNRgeC9j1KNHJGw3MSAvk8de/SlYdzcHirTSwBMwQnG8x/L/AI1pR3bTxStDBJlRlN+Asnpg+nv71xJkfTI7fZPBe2ch3iBwGwfdedp5ruXgjltvs43RIVACxnaVHoMdPShqwI57UbrVLW8t44L0XFy5+e3SIbVH88fWiq2o2aWniOzj00MkrYZwrE456n8OtFAjV0XwjoPh24kn0nTo7WWVdjsrMSVznHJNXdX0bTtesDZapapc25YNsfIwR0II5FFFK7vcdlawWOj6fpmlR6XZ2qR2UYIWHkgZJJ6+5JpIdE02CUSR2kYcHIJycfnRRRcdh95pdlfsGubdXYDAbJB/MU1dH09LVrZbVBExBYZOSR0yepoopXAeNMsxPFOIF8yFQkbZPygcCoToOmFdptFxnP3j1/Oiii4Fm6sra9iWK4iDxqchckDP4Uklhay2a2j
+wqYFAAT0xRRQBBLoWmTIiyWikINq4JBx9Qali0uxhtXtktoxC/wB5SM5+pNFFFwIYNB0y3mEsVoodTkEsWwfoTRc6RFcX4vRcXEMwXbmJwBj8QaKKaEye0063s3eSNS0r/flc7mb8aKKKQz//2Q==</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+</Report>

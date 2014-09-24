@@ -1,0 +1,3357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
+  <DataSources>
+    <DataSource Name="config">
+      <DataSourceReference>/Reports/config</DataSourceReference>
+      <rd:DataSourceID>a81d4975-95bf-4627-b1e8-57ad86b43f71</rd:DataSourceID>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+    <DataSource Name="Warehouse_ReportModel">
+      <DataSourceReference>/Models/Warehouse</DataSourceReference>
+      <rd:DataSourceID>89488784-40f2-40a1-8305-ab4bf39acd3c</rd:DataSourceID>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+    <DataSource Name="warehouse_database">
+      <DataSourceReference>/Reports/warehouse</DataSourceReference>
+      <rd:DataSourceID>1201ea29-7e7d-4fd3-a846-6bf173abd407</rd:DataSourceID>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DateFormat">
+      <Fields>
+        <Field Name="Value">
+          <DataField>Value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>config</DataSourceName>
+        <CommandText>SELECT Value
+FROM Config
+WHERE [Key]='DateFormat'</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="GetBrandingImage">
+      <Fields>
+        <Field Name="HeaderBrandingImageUrl">
+          <DataField>HeaderBrandingImageUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BrandingImageUrl">
+          <DataField>BrandingImageUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LargeBrandingImageUrl">
+          <DataField>LargeBrandingImageUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PoweredByBrandingImageUrl">
+          <DataField>PoweredByBrandingImageUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportingNIconBrandingImageUrl">
+          <DataField>ReportingNIconBrandingImageUrl</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>config</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>GetBrandingImage</CommandText>
+      </Query>
+    </DataSet>
+    <DataSet Name="ds_DataProtection_Summary">
+      <Fields>
+        <Field Name="Job_ID">
+          <DataField>Job ID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Job_Return_Code">
+          <DataField>Job Return Code</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Job_Start_Time">
+          <DataField>Job Start Time</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Job_End_Time">
+          <DataField>Job End Time</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Warehouse_ReportModel</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign" xmlns:rb="http://schemas.microsoft.com/sqlserver/2004/11/reportbuilder"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Fact Device Rule--&gt;
+        &lt;EntityID&gt;G8a5087d6-ebe7-4900-a9de-2d7ad41c4a78&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="Job ID"&gt;
+          &lt;Expression Name="Job ID"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Job ID--&gt;
+              &lt;AttributeID&gt;Gb0da2924-cfeb-4e20-ae8f-ef55b4c41bef&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Job Return Code"&gt;
+          &lt;Expression Name="Job Return Code"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Job Return Code--&gt;
+              &lt;AttributeID&gt;G143b7428-ddc7-4741-9ba9-4d0113331999&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Job Start Time"&gt;
+          &lt;Expression Name="Job Start Time"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Job Start Time--&gt;
+              &lt;AttributeID&gt;Gd1b91107-2fb5-4926-b576-22fbc220585b&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Job End Time"&gt;
+          &lt;Expression Name="Job End Time"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Job End Time--&gt;
+              &lt;AttributeID&gt;G692bbc20-86e4-4b90-ab2f-98ba6cfa8bea&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+      &lt;Filter&gt;
+        &lt;Expression Name="expr1"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Path&gt;
+                        &lt;RolePathItem&gt;
+                          &lt;!--Device--&gt;
+                          &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                        &lt;/RolePathItem&gt;
+                        &lt;RolePathItem&gt;
+                          &lt;!--Fact Backup Services--&gt;
+                          &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                        &lt;/RolePathItem&gt;
+                        &lt;RolePathItem&gt;
+                          &lt;!--Customer--&gt;
+                          &lt;RoleID&gt;Gd00565c6-490e-49e8-833d-64c2de9eb4fb&lt;/RoleID&gt;
+                        &lt;/RolePathItem&gt;
+                      &lt;/Path&gt;
+                      &lt;AttributeRef&gt;
+                        &lt;!--Customer ID--&gt;
+                        &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+                      &lt;/AttributeRef&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;ParameterRef&gt;
+                        &lt;ParameterName&gt;Customer ID&lt;/ParameterName&gt;
+                      &lt;/ParameterRef&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+                &lt;CustomProperties&gt;
+                  &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                &lt;/CustomProperties&gt;
+              &lt;/Expression&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;GreaterThanOrEquals&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Path&gt;
+                              &lt;RolePathItem&gt;
+                                &lt;!--Device--&gt;
+                                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                              &lt;/RolePathItem&gt;
+                              &lt;RolePathItem&gt;
+                                &lt;!--Fact Backup Services--&gt;
+                                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                              &lt;/RolePathItem&gt;
+                            &lt;/Path&gt;
+                            &lt;AttributeRef&gt;
+                              &lt;!--Job Start Time--&gt;
+                              &lt;AttributeID&gt;Gd1b91107-2fb5-4926-b576-22fbc220585b&lt;/AttributeID&gt;
+                            &lt;/AttributeRef&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;ParameterRef&gt;
+                              &lt;ParameterName&gt;Job Start Time&lt;/ParameterName&gt;
+                            &lt;/ParameterRef&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                      &lt;CustomProperties&gt;
+                        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                      &lt;/CustomProperties&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Function&gt;
+                              &lt;FunctionName&gt;LessThanOrEquals&lt;/FunctionName&gt;
+                              &lt;Arguments&gt;
+                                &lt;Expression&gt;
+                                  &lt;Path&gt;
+                                    &lt;RolePathItem&gt;
+                                      &lt;!--Device--&gt;
+                                      &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                                    &lt;/RolePathItem&gt;
+                                    &lt;RolePathItem&gt;
+                                      &lt;!--Fact Backup Services--&gt;
+                                      &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                                    &lt;/RolePathItem&gt;
+                                  &lt;/Path&gt;
+                                  &lt;AttributeRef&gt;
+                                    &lt;!--Job Start Time--&gt;
+                                    &lt;AttributeID&gt;Gd1b91107-2fb5-4926-b576-22fbc220585b&lt;/AttributeID&gt;
+                                  &lt;/AttributeRef&gt;
+                                &lt;/Expression&gt;
+                                &lt;Expression&gt;
+                                  &lt;ParameterRef&gt;
+                                    &lt;ParameterName&gt;Job Start Time1&lt;/ParameterName&gt;
+                                  &lt;/ParameterRef&gt;
+                                &lt;/Expression&gt;
+                              &lt;/Arguments&gt;
+                            &lt;/Function&gt;
+                            &lt;CustomProperties&gt;
+                              &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                            &lt;/CustomProperties&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;Function&gt;
+                              &lt;FunctionName&gt;Or&lt;/FunctionName&gt;
+                              &lt;Arguments&gt;
+                                &lt;Expression&gt;
+                                  &lt;Function&gt;
+                                    &lt;FunctionName&gt;In&lt;/FunctionName&gt;
+                                    &lt;Arguments&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Path&gt;
+                                          &lt;RolePathItem&gt;
+                                            &lt;!--Device--&gt;
+                                            &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                                          &lt;/RolePathItem&gt;
+                                          &lt;RolePathItem&gt;
+                                            &lt;!--Fact Backup Services--&gt;
+                                            &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                                          &lt;/RolePathItem&gt;
+                                          &lt;RolePathItem&gt;
+                                            &lt;!--Device--&gt;
+                                            &lt;RoleID&gt;G328d0067-df64-4a21-8f7c-3f975e6ef992&lt;/RoleID&gt;
+                                          &lt;/RolePathItem&gt;
+                                        &lt;/Path&gt;
+                                        &lt;AttributeRef&gt;
+                                          &lt;!--Device Class ID--&gt;
+                                          &lt;AttributeID&gt;G8fcd0fca-21d3-4314-b06f-259089de0552&lt;/AttributeID&gt;
+                                        &lt;/AttributeRef&gt;
+                                      &lt;/Expression&gt;
+                                      &lt;Expression&gt;
+                                        &lt;ParameterRef&gt;
+                                          &lt;ParameterName&gt;Device Class ID&lt;/ParameterName&gt;
+                                        &lt;/ParameterRef&gt;
+                                      &lt;/Expression&gt;
+                                    &lt;/Arguments&gt;
+                                  &lt;/Function&gt;
+                                  &lt;CustomProperties&gt;
+                                    &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                  &lt;/CustomProperties&gt;
+                                &lt;/Expression&gt;
+                                &lt;Expression&gt;
+                                  &lt;Function&gt;
+                                    &lt;FunctionName&gt;Or&lt;/FunctionName&gt;
+                                    &lt;Arguments&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Function&gt;
+                                          &lt;FunctionName&gt;In&lt;/FunctionName&gt;
+                                          &lt;Arguments&gt;
+                                            &lt;Expression&gt;
+                                              &lt;Path&gt;
+                                                &lt;RolePathItem&gt;
+                                                  &lt;!--Device--&gt;
+                                                  &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                                                &lt;/RolePathItem&gt;
+                                                &lt;RolePathItem&gt;
+                                                  &lt;!--Fact Backup Services--&gt;
+                                                  &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                                                &lt;/RolePathItem&gt;
+                                                &lt;RolePathItem&gt;
+                                                  &lt;!--Device--&gt;
+                                                  &lt;RoleID&gt;G328d0067-df64-4a21-8f7c-3f975e6ef992&lt;/RoleID&gt;
+                                                &lt;/RolePathItem&gt;
+                                              &lt;/Path&gt;
+                                              &lt;AttributeRef&gt;
+                                                &lt;!--Device ID--&gt;
+                                                &lt;AttributeID&gt;G6408a2ed-ed27-4df4-bee5-5c25dd32976c&lt;/AttributeID&gt;
+                                              &lt;/AttributeRef&gt;
+                                            &lt;/Expression&gt;
+                                            &lt;Expression&gt;
+                                              &lt;ParameterRef&gt;
+                                                &lt;ParameterName&gt;Device ID&lt;/ParameterName&gt;
+                                              &lt;/ParameterRef&gt;
+                                            &lt;/Expression&gt;
+                                          &lt;/Arguments&gt;
+                                        &lt;/Function&gt;
+                                        &lt;CustomProperties&gt;
+                                          &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                        &lt;/CustomProperties&gt;
+                                      &lt;/Expression&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Function&gt;
+                                          &lt;FunctionName&gt;GreaterThan&lt;/FunctionName&gt;
+                                          &lt;Arguments&gt;
+                                            &lt;Expression&gt;
+                                              &lt;Function&gt;
+                                                &lt;FunctionName&gt;Count&lt;/FunctionName&gt;
+                                                &lt;Arguments&gt;
+                                                  &lt;Expression&gt;
+                                                    &lt;Path&gt;
+                                                      &lt;RolePathItem&gt;
+                                                        &lt;!--Device--&gt;
+                                                        &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                                                      &lt;/RolePathItem&gt;
+                                                      &lt;RolePathItem&gt;
+                                                        &lt;!--Fact Backup Services--&gt;
+                                                        &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                                                      &lt;/RolePathItem&gt;
+                                                      &lt;RolePathItem&gt;
+                                                        &lt;!--Device--&gt;
+                                                        &lt;RoleID&gt;G328d0067-df64-4a21-8f7c-3f975e6ef992&lt;/RoleID&gt;
+                                                      &lt;/RolePathItem&gt;
+                                                      &lt;RolePathItem&gt;
+                                                        &lt;!--Fact Device Rules--&gt;
+                                                        &lt;RoleID&gt;Ga96c3d7a-491b-40d4-a620-e70eaf29c7a1&lt;/RoleID&gt;
+                                                      &lt;/RolePathItem&gt;
+                                                      &lt;RolePathItem&gt;
+                                                        &lt;!--Rule--&gt;
+                                                        &lt;RoleID&gt;Gcd9e11d3-5f88-410b-8d28-4ee6ae1e6837&lt;/RoleID&gt;
+                                                      &lt;/RolePathItem&gt;
+                                                    &lt;/Path&gt;
+                                                    &lt;Function&gt;
+                                                      &lt;FunctionName&gt;Filter&lt;/FunctionName&gt;
+                                                      &lt;Arguments&gt;
+                                                        &lt;Expression&gt;
+                                                          &lt;EntityRef&gt;
+                                                            &lt;!--Dim Rule--&gt;
+                                                            &lt;EntityID&gt;G6c24adaf-def0-4f61-b921-720473df5837&lt;/EntityID&gt;
+                                                          &lt;/EntityRef&gt;
+                                                        &lt;/Expression&gt;
+                                                        &lt;Expression&gt;
+                                                          &lt;AttributeRef&gt;
+                                                            &lt;AttributeName&gt;expr3&lt;/AttributeName&gt;
+                                                          &lt;/AttributeRef&gt;
+                                                        &lt;/Expression&gt;
+                                                      &lt;/Arguments&gt;
+                                                    &lt;/Function&gt;
+                                                  &lt;/Expression&gt;
+                                                &lt;/Arguments&gt;
+                                              &lt;/Function&gt;
+                                            &lt;/Expression&gt;
+                                            &lt;Expression&gt;
+                                              &lt;Literal&gt;
+                                                &lt;DataType&gt;Integer&lt;/DataType&gt;
+                                                &lt;Value&gt;0&lt;/Value&gt;
+                                              &lt;/Literal&gt;
+                                            &lt;/Expression&gt;
+                                          &lt;/Arguments&gt;
+                                        &lt;/Function&gt;
+                                        &lt;CustomProperties&gt;
+                                          &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                        &lt;/CustomProperties&gt;
+                                      &lt;/Expression&gt;
+                                    &lt;/Arguments&gt;
+                                  &lt;/Function&gt;
+                                &lt;/Expression&gt;
+                              &lt;/Arguments&gt;
+                            &lt;/Function&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Filter" /&gt;
+            &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;G8a5087d6-ebe7-4900-a9de-2d7ad41c4a78&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+            &lt;CustomProperty Name="qd:AutoChangeBaseEntity" /&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;expr2&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Filter&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+  &lt;CalculatedAttributes&gt;
+    &lt;Expression Name="expr3"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;In&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Rule ID--&gt;
+              &lt;AttributeID&gt;Gb21d55f8-686d-48bf-beed-603c93fed57d&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;ParameterRef&gt;
+              &lt;ParameterName&gt;Rule ID&lt;/ParameterName&gt;
+            &lt;/ParameterRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+        &lt;CustomProperty Name="qd:Filter" /&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;G6c24adaf-def0-4f61-b921-720473df5837&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:Design"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;expr4&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr4"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;In&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--Rule ID--&gt;
+                    &lt;AttributeID&gt;Gb21d55f8-686d-48bf-beed-603c93fed57d&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;ParameterRef&gt;
+                    &lt;ParameterName&gt;Rule ID&lt;/ParameterName&gt;
+                  &lt;/ParameterRef&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+            &lt;CustomProperties&gt;
+              &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+            &lt;/CustomProperties&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;Null /&gt;
+            &lt;CustomProperties&gt;
+              &lt;CustomProperty Name="qd:Unspecified" /&gt;
+            &lt;/CustomProperties&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:Filter" /&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;G6c24adaf-def0-4f61-b921-720473df5837&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+  &lt;/CalculatedAttributes&gt;
+  &lt;Parameters&gt;
+    &lt;Parameter Name="Customer ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Job Start Time"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Job Start Time1"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Device Class ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+      &lt;Cardinality&gt;Many&lt;/Cardinality&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Device ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+      &lt;Cardinality&gt;Many&lt;/Cardinality&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Rule ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+      &lt;Cardinality&gt;Many&lt;/Cardinality&gt;
+    &lt;/Parameter&gt;
+  &lt;/Parameters&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="Customer ID">
+            <Value>=Parameters!Customer_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Job Start Time">
+            <Value>=Parameters!UpdatedStartDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Job Start Time1">
+            <Value>=Parameters!UpdatedEndDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Device ID">
+            <Value>=Parameters!Device_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Device Class ID">
+            <Value>=Parameters!Device_Class_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Rule ID">
+            <Value>=Parameters!Rule_ID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="ds_DataProtection_Details">
+      <Fields>
+        <Field Name="Job_Name">
+          <DataField>Job Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Job_Type">
+          <DataField>Job Type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Device_Name">
+          <DataField>Device Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Job_Error_Status">
+          <DataField>Job Error Status</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Job_Status">
+          <DataField>Job Status</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Job_Start_Time">
+          <DataField>Job Start Time</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Job_End_Time">
+          <DataField>Job End Time</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Job_Return_Code">
+          <DataField>Job Return Code</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Total_Bytes_Processed">
+          <DataField>Total Bytes Processed</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Number_Of_Files_In_Use">
+          <DataField>Number Of Files In Use</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Number_Of_Files_Corrupted">
+          <DataField>Number Of Files Corrupted</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Number_Of_Files_Skipped">
+          <DataField>Number Of Files Skipped</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Number_Of_Files_Processed">
+          <DataField>Number Of Files Processed</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Number_Of_Directories_Processed">
+          <DataField>Number Of Directories Processed</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Warehouse_ReportModel</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign" xmlns:rb="http://schemas.microsoft.com/sqlserver/2004/11/reportbuilder"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Fact Device Rule--&gt;
+        &lt;EntityID&gt;G8a5087d6-ebe7-4900-a9de-2d7ad41c4a78&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="Job Name"&gt;
+          &lt;Expression Name="Job Name"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Job Name--&gt;
+              &lt;AttributeID&gt;G1ea4821d-68da-47a0-9d00-0ac60aac4fc1&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Job Type"&gt;
+          &lt;Expression Name="Job Type"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Job Type--&gt;
+              &lt;AttributeID&gt;Gbabfcfc4-3f47-43e8-a0cd-1e07b4db937d&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Job Status"&gt;
+          &lt;Expression Name="Job Status"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Job Status--&gt;
+              &lt;AttributeID&gt;G89e147f5-58e9-4a7f-87a3-661523d29aed&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Job Error Status"&gt;
+          &lt;Expression Name="Job Error Status"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Job Error Status--&gt;
+              &lt;AttributeID&gt;G73ffa434-010d-42b3-95af-6fe4078ab7ed&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Device Name"&gt;
+          &lt;Expression Name="Device Name"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G328d0067-df64-4a21-8f7c-3f975e6ef992&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Device Name--&gt;
+              &lt;AttributeID&gt;Gc3c246ca-9339-4611-aaaa-690ae9b50d4f&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Job Start Time"&gt;
+          &lt;Expression Name="Job Start Time"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Job Start Time--&gt;
+              &lt;AttributeID&gt;Gd1b91107-2fb5-4926-b576-22fbc220585b&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Job End Time"&gt;
+          &lt;Expression Name="Job End Time"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Job End Time--&gt;
+              &lt;AttributeID&gt;G692bbc20-86e4-4b90-ab2f-98ba6cfa8bea&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Job Return Code"&gt;
+          &lt;Expression Name="Job Return Code"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Job Return Code--&gt;
+              &lt;AttributeID&gt;G143b7428-ddc7-4741-9ba9-4d0113331999&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Total Bytes Processed"&gt;
+          &lt;Expression Name="Total Bytes Processed"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Total Bytes Processed--&gt;
+              &lt;AttributeID&gt;G17bc57d6-bb99-4794-8dbe-4a7999dd2f70&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Number Of Files In Use"&gt;
+          &lt;Expression Name="Number Of Files In Use"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Number Of Files In Use--&gt;
+              &lt;AttributeID&gt;G97bdb137-74b5-48d0-a90b-2cd33a0e7731&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Number Of Files Corrupted"&gt;
+          &lt;Expression Name="Number Of Files Corrupted"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Number Of Files Corrupted--&gt;
+              &lt;AttributeID&gt;G17f6d26e-6c7e-4024-bc1d-c8b7885d3e22&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Number Of Files Skipped"&gt;
+          &lt;Expression Name="Number Of Files Skipped"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Number Of Files Skipped--&gt;
+              &lt;AttributeID&gt;G25b4a93a-8ba8-4b10-bd2f-63dccc2739b9&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Number Of Files Processed"&gt;
+          &lt;Expression Name="Number Of Files Processed"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Number Of Files Processed--&gt;
+              &lt;AttributeID&gt;Gbf2b5a86-cbe5-4c16-83c3-6109781c02b1&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Number Of Directories Processed"&gt;
+          &lt;Expression Name="Number Of Directories Processed"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Fact Backup Services--&gt;
+                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Number Of Directories Processed--&gt;
+              &lt;AttributeID&gt;Gd88b500e-a718-441b-b318-2d8e0f9a4775&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+      &lt;Filter&gt;
+        &lt;Expression Name="expr1"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Path&gt;
+                        &lt;RolePathItem&gt;
+                          &lt;!--Device--&gt;
+                          &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                        &lt;/RolePathItem&gt;
+                        &lt;RolePathItem&gt;
+                          &lt;!--Fact Backup Services--&gt;
+                          &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                        &lt;/RolePathItem&gt;
+                        &lt;RolePathItem&gt;
+                          &lt;!--Customer--&gt;
+                          &lt;RoleID&gt;Gd00565c6-490e-49e8-833d-64c2de9eb4fb&lt;/RoleID&gt;
+                        &lt;/RolePathItem&gt;
+                      &lt;/Path&gt;
+                      &lt;AttributeRef&gt;
+                        &lt;!--Customer ID--&gt;
+                        &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+                      &lt;/AttributeRef&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;ParameterRef&gt;
+                        &lt;ParameterName&gt;Customer ID&lt;/ParameterName&gt;
+                      &lt;/ParameterRef&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+                &lt;CustomProperties&gt;
+                  &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                &lt;/CustomProperties&gt;
+              &lt;/Expression&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;GreaterThanOrEquals&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Path&gt;
+                              &lt;RolePathItem&gt;
+                                &lt;!--Device--&gt;
+                                &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                              &lt;/RolePathItem&gt;
+                              &lt;RolePathItem&gt;
+                                &lt;!--Fact Backup Services--&gt;
+                                &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                              &lt;/RolePathItem&gt;
+                            &lt;/Path&gt;
+                            &lt;AttributeRef&gt;
+                              &lt;!--Job Start Time--&gt;
+                              &lt;AttributeID&gt;Gd1b91107-2fb5-4926-b576-22fbc220585b&lt;/AttributeID&gt;
+                            &lt;/AttributeRef&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;ParameterRef&gt;
+                              &lt;ParameterName&gt;Job Start Time&lt;/ParameterName&gt;
+                            &lt;/ParameterRef&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                      &lt;CustomProperties&gt;
+                        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                      &lt;/CustomProperties&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Function&gt;
+                              &lt;FunctionName&gt;LessThanOrEquals&lt;/FunctionName&gt;
+                              &lt;Arguments&gt;
+                                &lt;Expression&gt;
+                                  &lt;Path&gt;
+                                    &lt;RolePathItem&gt;
+                                      &lt;!--Device--&gt;
+                                      &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                                    &lt;/RolePathItem&gt;
+                                    &lt;RolePathItem&gt;
+                                      &lt;!--Fact Backup Services--&gt;
+                                      &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                                    &lt;/RolePathItem&gt;
+                                  &lt;/Path&gt;
+                                  &lt;AttributeRef&gt;
+                                    &lt;!--Job Start Time--&gt;
+                                    &lt;AttributeID&gt;Gd1b91107-2fb5-4926-b576-22fbc220585b&lt;/AttributeID&gt;
+                                  &lt;/AttributeRef&gt;
+                                &lt;/Expression&gt;
+                                &lt;Expression&gt;
+                                  &lt;ParameterRef&gt;
+                                    &lt;ParameterName&gt;Job Start Time1&lt;/ParameterName&gt;
+                                  &lt;/ParameterRef&gt;
+                                &lt;/Expression&gt;
+                              &lt;/Arguments&gt;
+                            &lt;/Function&gt;
+                            &lt;CustomProperties&gt;
+                              &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                            &lt;/CustomProperties&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;Function&gt;
+                              &lt;FunctionName&gt;Or&lt;/FunctionName&gt;
+                              &lt;Arguments&gt;
+                                &lt;Expression&gt;
+                                  &lt;Function&gt;
+                                    &lt;FunctionName&gt;In&lt;/FunctionName&gt;
+                                    &lt;Arguments&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Path&gt;
+                                          &lt;RolePathItem&gt;
+                                            &lt;!--Device--&gt;
+                                            &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                                          &lt;/RolePathItem&gt;
+                                          &lt;RolePathItem&gt;
+                                            &lt;!--Fact Backup Services--&gt;
+                                            &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                                          &lt;/RolePathItem&gt;
+                                          &lt;RolePathItem&gt;
+                                            &lt;!--Device--&gt;
+                                            &lt;RoleID&gt;G328d0067-df64-4a21-8f7c-3f975e6ef992&lt;/RoleID&gt;
+                                          &lt;/RolePathItem&gt;
+                                        &lt;/Path&gt;
+                                        &lt;AttributeRef&gt;
+                                          &lt;!--Device Class ID--&gt;
+                                          &lt;AttributeID&gt;G8fcd0fca-21d3-4314-b06f-259089de0552&lt;/AttributeID&gt;
+                                        &lt;/AttributeRef&gt;
+                                      &lt;/Expression&gt;
+                                      &lt;Expression&gt;
+                                        &lt;ParameterRef&gt;
+                                          &lt;ParameterName&gt;Device Class ID&lt;/ParameterName&gt;
+                                        &lt;/ParameterRef&gt;
+                                      &lt;/Expression&gt;
+                                    &lt;/Arguments&gt;
+                                  &lt;/Function&gt;
+                                  &lt;CustomProperties&gt;
+                                    &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                  &lt;/CustomProperties&gt;
+                                &lt;/Expression&gt;
+                                &lt;Expression&gt;
+                                  &lt;Function&gt;
+                                    &lt;FunctionName&gt;Or&lt;/FunctionName&gt;
+                                    &lt;Arguments&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Function&gt;
+                                          &lt;FunctionName&gt;In&lt;/FunctionName&gt;
+                                          &lt;Arguments&gt;
+                                            &lt;Expression&gt;
+                                              &lt;Path&gt;
+                                                &lt;RolePathItem&gt;
+                                                  &lt;!--Device--&gt;
+                                                  &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                                                &lt;/RolePathItem&gt;
+                                                &lt;RolePathItem&gt;
+                                                  &lt;!--Fact Backup Services--&gt;
+                                                  &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                                                &lt;/RolePathItem&gt;
+                                                &lt;RolePathItem&gt;
+                                                  &lt;!--Device--&gt;
+                                                  &lt;RoleID&gt;G328d0067-df64-4a21-8f7c-3f975e6ef992&lt;/RoleID&gt;
+                                                &lt;/RolePathItem&gt;
+                                              &lt;/Path&gt;
+                                              &lt;AttributeRef&gt;
+                                                &lt;!--Device ID--&gt;
+                                                &lt;AttributeID&gt;G6408a2ed-ed27-4df4-bee5-5c25dd32976c&lt;/AttributeID&gt;
+                                              &lt;/AttributeRef&gt;
+                                            &lt;/Expression&gt;
+                                            &lt;Expression&gt;
+                                              &lt;ParameterRef&gt;
+                                                &lt;ParameterName&gt;Device ID&lt;/ParameterName&gt;
+                                              &lt;/ParameterRef&gt;
+                                            &lt;/Expression&gt;
+                                          &lt;/Arguments&gt;
+                                        &lt;/Function&gt;
+                                        &lt;CustomProperties&gt;
+                                          &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                        &lt;/CustomProperties&gt;
+                                      &lt;/Expression&gt;
+                                      &lt;Expression&gt;
+                                        &lt;Function&gt;
+                                          &lt;FunctionName&gt;GreaterThan&lt;/FunctionName&gt;
+                                          &lt;Arguments&gt;
+                                            &lt;Expression&gt;
+                                              &lt;Function&gt;
+                                                &lt;FunctionName&gt;Count&lt;/FunctionName&gt;
+                                                &lt;Arguments&gt;
+                                                  &lt;Expression&gt;
+                                                    &lt;Path&gt;
+                                                      &lt;RolePathItem&gt;
+                                                        &lt;!--Device--&gt;
+                                                        &lt;RoleID&gt;G6d4032fe-e85f-4953-8163-72771d350995&lt;/RoleID&gt;
+                                                      &lt;/RolePathItem&gt;
+                                                      &lt;RolePathItem&gt;
+                                                        &lt;!--Fact Backup Services--&gt;
+                                                        &lt;RoleID&gt;Gb6fdb864-a77a-4be0-8c79-0b193d50b1ba&lt;/RoleID&gt;
+                                                      &lt;/RolePathItem&gt;
+                                                      &lt;RolePathItem&gt;
+                                                        &lt;!--Device--&gt;
+                                                        &lt;RoleID&gt;G328d0067-df64-4a21-8f7c-3f975e6ef992&lt;/RoleID&gt;
+                                                      &lt;/RolePathItem&gt;
+                                                      &lt;RolePathItem&gt;
+                                                        &lt;!--Fact Device Rules--&gt;
+                                                        &lt;RoleID&gt;Ga96c3d7a-491b-40d4-a620-e70eaf29c7a1&lt;/RoleID&gt;
+                                                      &lt;/RolePathItem&gt;
+                                                      &lt;RolePathItem&gt;
+                                                        &lt;!--Rule--&gt;
+                                                        &lt;RoleID&gt;Gcd9e11d3-5f88-410b-8d28-4ee6ae1e6837&lt;/RoleID&gt;
+                                                      &lt;/RolePathItem&gt;
+                                                    &lt;/Path&gt;
+                                                    &lt;Function&gt;
+                                                      &lt;FunctionName&gt;Filter&lt;/FunctionName&gt;
+                                                      &lt;Arguments&gt;
+                                                        &lt;Expression&gt;
+                                                          &lt;EntityRef&gt;
+                                                            &lt;!--Dim Rule--&gt;
+                                                            &lt;EntityID&gt;G6c24adaf-def0-4f61-b921-720473df5837&lt;/EntityID&gt;
+                                                          &lt;/EntityRef&gt;
+                                                        &lt;/Expression&gt;
+                                                        &lt;Expression&gt;
+                                                          &lt;AttributeRef&gt;
+                                                            &lt;AttributeName&gt;expr3&lt;/AttributeName&gt;
+                                                          &lt;/AttributeRef&gt;
+                                                        &lt;/Expression&gt;
+                                                      &lt;/Arguments&gt;
+                                                    &lt;/Function&gt;
+                                                  &lt;/Expression&gt;
+                                                &lt;/Arguments&gt;
+                                              &lt;/Function&gt;
+                                            &lt;/Expression&gt;
+                                            &lt;Expression&gt;
+                                              &lt;Literal&gt;
+                                                &lt;DataType&gt;Integer&lt;/DataType&gt;
+                                                &lt;Value&gt;0&lt;/Value&gt;
+                                              &lt;/Literal&gt;
+                                            &lt;/Expression&gt;
+                                          &lt;/Arguments&gt;
+                                        &lt;/Function&gt;
+                                        &lt;CustomProperties&gt;
+                                          &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                                        &lt;/CustomProperties&gt;
+                                      &lt;/Expression&gt;
+                                    &lt;/Arguments&gt;
+                                  &lt;/Function&gt;
+                                &lt;/Expression&gt;
+                              &lt;/Arguments&gt;
+                            &lt;/Function&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Filter" /&gt;
+            &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;G8a5087d6-ebe7-4900-a9de-2d7ad41c4a78&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+            &lt;CustomProperty Name="qd:AutoChangeBaseEntity" /&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;expr2&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Filter&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+  &lt;CalculatedAttributes&gt;
+    &lt;Expression Name="expr3"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;In&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Rule ID--&gt;
+              &lt;AttributeID&gt;Gb21d55f8-686d-48bf-beed-603c93fed57d&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;ParameterRef&gt;
+              &lt;ParameterName&gt;Rule ID&lt;/ParameterName&gt;
+            &lt;/ParameterRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+        &lt;CustomProperty Name="qd:Filter" /&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;G6c24adaf-def0-4f61-b921-720473df5837&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:Design"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;expr4&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+    &lt;Expression Name="expr4"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;In&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--Rule ID--&gt;
+                    &lt;AttributeID&gt;Gb21d55f8-686d-48bf-beed-603c93fed57d&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;ParameterRef&gt;
+                    &lt;ParameterName&gt;Rule ID&lt;/ParameterName&gt;
+                  &lt;/ParameterRef&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+            &lt;CustomProperties&gt;
+              &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+            &lt;/CustomProperties&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;Null /&gt;
+            &lt;CustomProperties&gt;
+              &lt;CustomProperty Name="qd:Unspecified" /&gt;
+            &lt;/CustomProperties&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:Filter" /&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;G6c24adaf-def0-4f61-b921-720473df5837&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+  &lt;/CalculatedAttributes&gt;
+  &lt;Parameters&gt;
+    &lt;Parameter Name="Customer ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Job Start Time"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Job Start Time1"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Device Class ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+      &lt;Cardinality&gt;Many&lt;/Cardinality&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Device ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+      &lt;Cardinality&gt;Many&lt;/Cardinality&gt;
+    &lt;/Parameter&gt;
+    &lt;Parameter Name="Rule ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+      &lt;Cardinality&gt;Many&lt;/Cardinality&gt;
+    &lt;/Parameter&gt;
+  &lt;/Parameters&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="Customer ID">
+            <Value>=Parameters!Customer_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Job Start Time">
+            <Value>=Parameters!UpdatedStartDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Job Start Time1">
+            <Value>=Parameters!UpdatedEndDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Device Class ID">
+            <Value>=Parameters!Device_Class_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Device ID">
+            <Value>=Parameters!Device_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="Rule ID">
+            <Value>=Parameters!Rule_ID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="ds_Customers">
+      <Fields>
+        <Field Name="Dim_Customer">
+          <DataField>Dim Customer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Customer_ID">
+          <DataField>Customer ID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Customer_Name">
+          <DataField>Customer Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Warehouse_ReportModel</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rb="http://schemas.microsoft.com/sqlserver/2004/11/reportbuilder" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Dim Customer--&gt;
+        &lt;EntityID&gt;G5d2d309e-f4c1-4d62-a323-b632888d2a60&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="Dim Customer"&gt;
+          &lt;Expression Name="Dim Customer"&gt;
+            &lt;EntityRef&gt;
+              &lt;!--Dim Customer--&gt;
+              &lt;EntityID&gt;G5d2d309e-f4c1-4d62-a323-b632888d2a60&lt;/EntityID&gt;
+            &lt;/EntityRef&gt;
+          &lt;/Expression&gt;
+          &lt;Details&gt;
+            &lt;Expression Name="Customer ID"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Customer ID--&gt;
+                &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+            &lt;Expression Name="Customer Name"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Customer Name--&gt;
+                &lt;AttributeID&gt;G673bb9e4-2523-4a2a-8656-76847ac659be&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+          &lt;/Details&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+      &lt;Filter&gt;
+        &lt;Expression Name="expr1"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;AttributeRef&gt;
+                  &lt;!--Customer ID--&gt;
+                  &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+                &lt;/AttributeRef&gt;
+              &lt;/Expression&gt;
+              &lt;Expression&gt;
+                &lt;ParameterRef&gt;
+                  &lt;ParameterName&gt;Customer ID&lt;/ParameterName&gt;
+                &lt;/ParameterRef&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+            &lt;CustomProperty Name="qd:Filter" /&gt;
+            &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;G5d2d309e-f4c1-4d62-a323-b632888d2a60&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+            &lt;CustomProperty Name="qd:AutoChangeBaseEntity" /&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;expr2&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Filter&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+  &lt;CalculatedAttributes&gt;
+    &lt;Expression Name="expr2"&gt;
+      &lt;Function&gt;
+        &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+        &lt;Arguments&gt;
+          &lt;Expression&gt;
+            &lt;Function&gt;
+              &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+              &lt;Arguments&gt;
+                &lt;Expression&gt;
+                  &lt;AttributeRef&gt;
+                    &lt;!--Customer ID--&gt;
+                    &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+                  &lt;/AttributeRef&gt;
+                &lt;/Expression&gt;
+                &lt;Expression&gt;
+                  &lt;ParameterRef&gt;
+                    &lt;ParameterName&gt;Customer ID&lt;/ParameterName&gt;
+                  &lt;/ParameterRef&gt;
+                &lt;/Expression&gt;
+              &lt;/Arguments&gt;
+            &lt;/Function&gt;
+            &lt;CustomProperties&gt;
+              &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+            &lt;/CustomProperties&gt;
+          &lt;/Expression&gt;
+          &lt;Expression&gt;
+            &lt;Null /&gt;
+            &lt;CustomProperties&gt;
+              &lt;CustomProperty Name="qd:Unspecified" /&gt;
+            &lt;/CustomProperties&gt;
+          &lt;/Expression&gt;
+        &lt;/Arguments&gt;
+      &lt;/Function&gt;
+      &lt;CustomProperties&gt;
+        &lt;CustomProperty Name="qd:Filter" /&gt;
+        &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+          &lt;Value xsi:type="xsd:string"&gt;G5d2d309e-f4c1-4d62-a323-b632888d2a60&lt;/Value&gt;
+        &lt;/CustomProperty&gt;
+        &lt;CustomProperty Name="qd:AutoChangeBaseEntity" /&gt;
+      &lt;/CustomProperties&gt;
+    &lt;/Expression&gt;
+  &lt;/CalculatedAttributes&gt;
+  &lt;Parameters&gt;
+    &lt;Parameter Name="Customer ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+    &lt;/Parameter&gt;
+  &lt;/Parameters&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="Customer ID">
+            <Value>=Parameters!Customer_ID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="GetStartDate">
+      <Fields>
+        <Field Name="UpdatedStartDate">
+          <DataField>UpdatedStartDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>config</DataSourceName>
+        <CommandText>SELECT [dbo].[fnScheduledStartDate](@StartDate, GETDATE(), @Subscription) AS UpdatedStartDate</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@StartDate">
+            <Value>=Parameters!StartDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Subscription">
+            <Value>=Parameters!Subscription.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="GetEndDate">
+      <Fields>
+        <Field Name="UpdatedEndDate">
+          <DataField>UpdatedEndDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>config</DataSourceName>
+        <CommandText>SELECT CONVERT(varchar,DATEADD(SECOND,59,DATEADD(MINUTE,59,DATEADD(HOUR,23,CONVERT(varchar,[dbo].[GetEndDate](@EndDate, GETDATE(), @Subscription),111)))),120) AS UpdatedEndDate</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@EndDate">
+            <Value>=Parameters!EndDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Subscription">
+            <Value>=Parameters!Subscription.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="dsCheckIfBackupmanagerOnly">
+      <Fields>
+        <Field Name="Result">
+          <DataField>Result</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>warehouse_database</DataSourceName>
+        <CommandText>IF EXISTS (
+SELECT 1 
+FROM  
+	[warehouse].[dbo].[fact_BackupServices] 
+WHERE 
+	CustomerID = @CustomerID
+	AND
+	[Job Type] &lt;&gt; @BackupManagerJobType
+	)
+	SELECT 1 AS Result
+ELSE
+	SELECT 0 AS Result</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@CustomerID">
+            <Value>=Parameters!Customer_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@BackupManagerJobType">
+            <Value>=Parameters!BackupManagerJobType.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Body>
+    <ReportItems>
+      <Rectangle Name="rcDP_BackupJobsSummary">
+        <ReportItems>
+          <Tablix Name="tblDPSummary">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>2.3747in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.74991in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.74991in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.19685in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txttblDPSummary_Result_Header">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Result</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>8</ZIndex>
+                          <Style>
+                            <BackgroundColor>#666666</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txttblDPSummary_Count_Header">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Count</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>7</ZIndex>
+                          <Style>
+                            <BackgroundColor>#666666</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txttblDPSummary_Percentage_Header">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Percentage</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>6</ZIndex>
+                          <Style>
+                            <BackgroundColor>#666666</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.19685in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txttblDPSummary_Result_Details">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=IIf(Fields!Job_Return_Code.Value&lt;1 OR Fields!Job_Return_Code.Value&gt;3, "Number of backups with unknown result:",
+Switch(Fields!Job_Return_Code.Value = 1, "Number of successful backups:",
+Fields!Job_Return_Code.Value = 2, "Number of backups completed with warnings:",
+Fields!Job_Return_Code.Value = 3, "Number of failed backups:"))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>2</ZIndex>
+                          <Style>
+                            <Border>
+                              <Color>#d5d4d9</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txttblDPSummary_Count_Details">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Count(Fields!Job_ID.Value, "table2_Details_Group")</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>1</ZIndex>
+                          <Style>
+                            <Border>
+                              <Color>#d5d4d9</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txttblDPSummary_Percentage_Details">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Count(Fields!Job_ID.Value, "table2_Details_Group")/Count(Fields!Job_ID.Value, "ds_DataProtection_Summary")</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>P</Format>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#d5d4d9</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.19685in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txttblDPSummary_Result_Total_Footer">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Total</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>5</ZIndex>
+                          <Style>
+                            <Border>
+                              <Color>#d5d4d9</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txttblDPSummary_Count_Total_Footer">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Count(Fields!Job_ID.Value, "ds_DataProtection_Summary")</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>4</ZIndex>
+                          <Style>
+                            <Border>
+                              <Color>#d5d4d9</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txttblDPSummary_Percentage_Total_Footer">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>100%</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>3</ZIndex>
+                          <Style>
+                            <Border>
+                              <Color>#d5d4d9</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="table2_Details_Group">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Job_Return_Code.Value</GroupExpression>
+                    </GroupExpressions>
+                    <DataElementName>Detail</DataElementName>
+                  </Group>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                  <DataElementName>Detail_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <NoRowsMessage>=“No data available for the selected period.”</NoRowsMessage>
+            <DataSetName>ds_DataProtection_Summary</DataSetName>
+            <SortExpressions>
+              <SortExpression>
+                <Value>=Fields!Job_Return_Code.Value</Value>
+              </SortExpression>
+            </SortExpressions>
+            <Top>1.42595cm</Top>
+            <Left>0.30758cm</Left>
+            <Height>1.5cm</Height>
+            <Width>9.84128cm</Width>
+            <DataElementOutput>Output</DataElementOutput>
+            <Style>
+              <Border>
+                <Color>#d5d4d9</Color>
+              </Border>
+              <FontSize>8pt</FontSize>
+              <Color>#666666</Color>
+            </Style>
+          </Tablix>
+          <Rectangle Name="rcDP_Summary_TitleBar">
+            <ReportItems>
+              <Textbox Name="txtDP_Summary_Title">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Backup Summary</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>#666666</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.09375cm</Top>
+                <Left>0.34286cm</Left>
+                <Height>0.4375cm</Height>
+                <Width>2.73679cm</Width>
+                <DataElementOutput>Output</DataElementOutput>
+                <Style>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>1pt</PaddingRight>
+                  <PaddingTop>1pt</PaddingTop>
+                  <PaddingBottom>1pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <DataElementOutput>ContentsOnly</DataElementOutput>
+            <Top>0.15611cm</Top>
+            <Height>0.625cm</Height>
+            <Width>9.83375in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Color>#d5d4d9</Color>
+                <Style>Solid</Style>
+              </Border>
+              <BackgroundColor>#f6f6f8</BackgroundColor>
+            </Style>
+          </Rectangle>
+        </ReportItems>
+        <KeepTogether>true</KeepTogether>
+        <Top>0.16087cm</Top>
+        <Height>2.96123cm</Height>
+        <Width>24.97773cm</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rcDP_BackupJobsDetails">
+        <ReportItems>
+          <Rectangle Name="rcDP_Details_TitleBar">
+            <ReportItems>
+              <Textbox Name="txtDP_Details_Title">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Details</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>#666666</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.09375cm</Top>
+                <Left>0.31746cm</Left>
+                <Height>0.4375cm</Height>
+                <Width>1.26984cm</Width>
+                <DataElementOutput>Output</DataElementOutput>
+                <Style>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>1pt</PaddingRight>
+                  <PaddingTop>1pt</PaddingTop>
+                  <PaddingBottom>1pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <DataElementOutput>ContentsOnly</DataElementOutput>
+            <Top>0.22838cm</Top>
+            <Height>0.625cm</Height>
+            <Width>9.82375in</Width>
+            <Style>
+              <Border>
+                <Color>#d5d4d9</Color>
+                <Style>Solid</Style>
+              </Border>
+              <BackgroundColor>#f6f6f8</BackgroundColor>
+            </Style>
+          </Rectangle>
+          <Tablix Name="stDPBackupJobDetails_Container">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>9.74001in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>1.45361in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="lstDPBackupJobDetails">
+                          <ReportItems>
+                            <Textbox Name="txtDPJob_Label_Details">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Job:</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>#666666</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.31746cm</Top>
+                              <Left>0.03125in</Left>
+                              <Height>0.43cm</Height>
+                              <Width>1.8783cm</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>5pt</PaddingLeft>
+                                <PaddingRight>1pt</PaddingRight>
+                                <PaddingTop>1pt</PaddingTop>
+                                <PaddingBottom>1pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtDPJobName_Details">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Job_Name.Value</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <Color>#666666</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.31746cm</Top>
+                              <Left>1.95768cm</Left>
+                              <Height>0.43cm</Height>
+                              <Width>10.79365cm</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>1pt</PaddingRight>
+                                <PaddingTop>1pt</PaddingTop>
+                                <PaddingBottom>1pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtDPDevice_Label_Details">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Device:</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>#666666</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.14746cm</Top>
+                              <Left>0.03125in</Left>
+                              <Height>0.4cm</Height>
+                              <Width>1.8783cm</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>5pt</PaddingLeft>
+                                <PaddingRight>1pt</PaddingRight>
+                                <PaddingTop>1pt</PaddingTop>
+                                <PaddingBottom>1pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtDPDeviceName_Details">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Device_Name.Value</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <Color>#666666</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.14746cm</Top>
+                              <Left>1.99296cm</Left>
+                              <Height>0.4cm</Height>
+                              <Width>10.79365cm</Width>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>1pt</PaddingRight>
+                                <PaddingTop>1pt</PaddingTop>
+                                <PaddingBottom>1pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtDPJobType_Label_Details">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Job Type:</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>#666666</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.74746cm</Top>
+                              <Left>0.07938cm</Left>
+                              <Height>0.4cm</Height>
+                              <Width>1.8783cm</Width>
+                              <ZIndex>4</ZIndex>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>5pt</PaddingLeft>
+                                <PaddingRight>1pt</PaddingRight>
+                                <PaddingTop>1pt</PaddingTop>
+                                <PaddingBottom>1pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtDPJobType_Details">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Job_Type.Value</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                        <Color>#666666</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.74746cm</Top>
+                              <Left>1.95768cm</Left>
+                              <Height>0.4cm</Height>
+                              <Width>10.79365cm</Width>
+                              <ZIndex>5</ZIndex>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>1pt</PaddingRight>
+                                <PaddingTop>1pt</PaddingTop>
+                                <PaddingBottom>1pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Tablix Name="tblDPBackupJobDetails">
+                              <TablixBody>
+                                <TablixColumns>
+                                  <TablixColumn>
+                                    <Width>1.20595in</Width>
+                                  </TablixColumn>
+                                  <TablixColumn>
+                                    <Width>1.22388in</Width>
+                                  </TablixColumn>
+                                  <TablixColumn>
+                                    <Width>0.91941in</Width>
+                                  </TablixColumn>
+                                  <TablixColumn>
+                                    <Width>1.18418in</Width>
+                                  </TablixColumn>
+                                  <TablixColumn>
+                                    <Width>1.03489in</Width>
+                                  </TablixColumn>
+                                  <TablixColumn>
+                                    <Width>1.03489in</Width>
+                                  </TablixColumn>
+                                  <TablixColumn>
+                                    <Width>1.03489in</Width>
+                                  </TablixColumn>
+                                  <TablixColumn>
+                                    <Width>1.03489in</Width>
+                                  </TablixColumn>
+                                  <TablixColumn>
+                                    <Width>1.01495in</Width>
+                                  </TablixColumn>
+                                </TablixColumns>
+                                <TablixRows>
+                                  <TablixRow>
+                                    <Height>0.23091in</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPStartTime_TableHeader">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>Start Time</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <Color>White</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>18</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BackgroundColor>#666666</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPEndTime_TableHeader">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>End Time</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <Color>White</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>17</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BackgroundColor>#666666</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPStatus_TableHeader">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>Status</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <Color>White</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>16</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BackgroundColor>#666666</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPFilesProcessed_TableHeader">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value># Files Processed</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <Color>White</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>15</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BackgroundColor>#666666</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPNumOfDirectories_TableHeader">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value># of Directories Processed</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <Color>White</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>14</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BackgroundColor>#666666</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPFilesSkipped_TableHeader">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value># Files Skipped</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <Color>White</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>13</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BackgroundColor>#666666</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPCorruptedFiles_TableHeader">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value># Corrupted Files</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <Color>White</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>12</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BackgroundColor>#666666</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPFilesInUse_TableHeader">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value># Files In Use</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <Color>White</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>11</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BackgroundColor>#666666</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPBytesProcessed_TableHeader">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>Bytes Processed</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <Color>White</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>10</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BottomBorder>
+                                                <Style>None</Style>
+                                              </BottomBorder>
+                                              <BackgroundColor>#666666</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                    </TablixCells>
+                                  </TablixRow>
+                                  <TablixRow>
+                                    <Height>0.19685in</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPStartTime_DetailsValue">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=IIf(Fields!Job_Type.Value &lt;&gt; Parameters!BackupManagerJobType.Value,FORMAT(Fields!Job_Start_Time.Value, First(Fields!Value.Value, "DateFormat")) &amp; " " &amp; FORMAT(Fields!Job_Start_Time.Value, "HH") &amp; ":" &amp; FORMAT(Fields!Job_Start_Time.Value, "mm") &amp; ":" &amp;  FORMAT(Fields!Job_Start_Time.Value, "ss"),"")</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <Color>#666666</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>9</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPEndTime_DetailsValue">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=FORMAT(Fields!Job_End_Time.Value, First(Fields!Value.Value, "DateFormat")) &amp; " " &amp; FORMAT(Fields!Job_End_Time.Value, "HH") &amp; ":" &amp; FORMAT(Fields!Job_End_Time.Value, "mm") &amp; ":" &amp;  FORMAT(Fields!Job_End_Time.Value, "ss")</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <Color>#666666</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>8</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPStatus_DetailsValue">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Switch(  Fields!Job_Return_Code.Value = 1, "Success",  Fields!Job_Return_Code.Value = 2, "Warnings",  Fields!Job_Return_Code.Value = 3, "Failed")</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <Color>=Switch(  Fields!Job_Return_Code.Value = 1, "Green",  Fields!Job_Return_Code.Value = 2, "Orange",  Fields!Job_Return_Code.Value = 3, "Red")</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>7</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPFilesProcessed_DetailsValue">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=IIf (Fields!Number_Of_Files_Processed.Value &gt; 0, Fields!Number_Of_Files_Processed.Value, "--")</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <Format>###,###,###</Format>
+                                                      <Color>#666666</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>6</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPNumOfDirectories_DetailsValue">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=IIf (Fields!Number_Of_Directories_Processed.Value &gt; 0, Fields!Number_Of_Directories_Processed.Value, "--")</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <Format>###,###,###</Format>
+                                                      <Color>#666666</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>5</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPFilesSkipped_DetailsValue">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=IIf (Fields!Number_Of_Files_Skipped.Value &gt; 0, Fields!Number_Of_Files_Skipped.Value, "--")</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <Format>###,###</Format>
+                                                      <Color>#666666</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>4</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPCorruptedFiles_DetailsValue">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=IIF(Fields!Number_Of_Files_Corrupted.Value &gt; 0, Fields!Number_Of_Files_Corrupted.Value, "--")</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <Format>###,###</Format>
+                                                      <Color>#666666</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>3</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPFilesInUse_DetailsValue">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=IIF(Fields!Number_Of_Files_In_Use.Value &gt; 0, Fields!Number_Of_Files_In_Use.Value, "--")</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <Format>###,###,###</Format>
+                                                      <Color>#666666</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>2</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPBytesProcessed_DetailsValue">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Switch(Fields!Total_Bytes_Processed.Value &gt; 0 AND Fields!Total_Bytes_Processed.Value &lt; (1024*1024 * 1024) , Fields!Total_Bytes_Processed.Value / (1024 * 1024),Fields!Total_Bytes_Processed.Value &gt; (1024*1024 * 1024) , Fields!Total_Bytes_Processed.Value / (1024 * 1024 * 1024), Fields!Total_Bytes_Processed.Value = 0, "--")</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <Format>=Switch( Fields!Total_Bytes_Processed.Value &gt; 0 AND Fields!Total_Bytes_Processed.Value &lt; (1024*1024 * 1024) , "###,### ' MB",  Fields!Total_Bytes_Processed.Value &gt; (1024*1024 * 1024) , "###,###' GB", Fields!Total_Bytes_Processed.Value = 0, "")</Format>
+                                                      <Color>#666666</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <ZIndex>1</ZIndex>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                    </TablixCells>
+                                  </TablixRow>
+                                  <TablixRow>
+                                    <Height>0.19685in</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="txtDPTranslateStatus_DetailsValue_Bottom">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Switch(Fields!Job_Status.Value = 1, "Job terminated due to cancellation.", 
+Fields!Job_Status.Value = 2, "Job has been completed by the engine and is waiting final disposition.", 
+Fields!Job_Status.Value = 3, "Job terminated with success but there were some exceptions.",
+Fields!Job_Status.Value = 4, "Job has been sent for execution.",
+Fields!Job_Status.Value = 5, "Job is in a hold state.",
+Fields!Job_Status.Value = 6, "Job terminated with an error.",
+Fields!Job_Status.Value = 7, "The schedule for the task is invalid.",
+Fields!Job_Status.Value = 8, "The time window is mutually exclusive thus job will never run.",
+Fields!Job_Status.Value = 9, "Job is eligible for dispatch and is late.",
+Fields!Job_Status.Value = 10, "Date of job makes it eligible to run, but time is not in window.",
+Fields!Job_Status.Value = 11, "Job is ready, but dispatcher is paused.",
+Fields!Job_Status.Value = 12, "The job needs to be dispositioned to an actual state.",
+Fields!Job_Status.Value = 13, "The system forced recovery of the job.",
+Fields!Job_Status.Value = 14, "Job has been disabled in the system.",
+Fields!Job_Status.Value = 15, "The job will be restarted with check point restart enabled, this value is only set in the job history summary.",
+Fields!Job_Status.Value = 16, "Job is currently running on server.",
+Fields!Job_Status.Value = 17, "Job is eligible for dispatch.",
+Fields!Job_Status.Value = 18, "The job has a due date in the future.",
+Fields!Job_Status.Value = 19, "Job terminated with success.",
+Fields!Job_Status.Value = 20, "Job is ready, but another higher precedence task is eligible to run.",
+Fields!Job_Status.Value = 21, "The job was aborted due to Abort Threshold time-out.",
+Fields!Job_Status.Value = 22, "The job needs to have the due date calculated.",
+Fields!Job_Status.Value = 23, "The job is linked to another job so will not start until the master job is finished."
+) &amp; " " &amp;  Fields!Job_Error_Status.Value</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                      <Color>#666666</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <Style>
+                                              <Border>
+                                                <Color>#d5d4d9</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <TopBorder>
+                                                <Style>None</Style>
+                                              </TopBorder>
+                                              <PaddingLeft>=IIf(Parameters!NonBackupManagerData.Value=1, "265pt","50pt")</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                          <ColSpan>9</ColSpan>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                    </TablixCells>
+                                  </TablixRow>
+                                </TablixRows>
+                              </TablixBody>
+                              <TablixColumnHierarchy>
+                                <TablixMembers>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=IIf(Parameters!NonBackupManagerData.Value=1,False,True)</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                  <TablixMember />
+                                  <TablixMember />
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=IIf(Parameters!NonBackupManagerData.Value=1,False,True)</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=IIf(Parameters!NonBackupManagerData.Value=1,False,True)</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=IIf(Parameters!NonBackupManagerData.Value=1,False,True)</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=IIf(Parameters!NonBackupManagerData.Value=1,False,True)</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>=IIf(Parameters!NonBackupManagerData.Value=1,False,True)</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                  <TablixMember />
+                                </TablixMembers>
+                              </TablixColumnHierarchy>
+                              <TablixRowHierarchy>
+                                <TablixMembers>
+                                  <TablixMember>
+                                    <KeepWithGroup>After</KeepWithGroup>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <Group Name="Details2" />
+                                    <TablixMembers>
+                                      <TablixMember />
+                                      <TablixMember />
+                                    </TablixMembers>
+                                  </TablixMember>
+                                </TablixMembers>
+                              </TablixRowHierarchy>
+                              <RepeatRowHeaders>true</RepeatRowHeaders>
+                              <DataSetName>ds_DataProtection_Details</DataSetName>
+                              <SortExpressions>
+                                <SortExpression>
+                                  <Value>=Fields!Job_End_Time.Value</Value>
+                                </SortExpression>
+                              </SortExpressions>
+                              <Top>0.74899in</Top>
+                              <Height>0.62461in</Height>
+                              <Width>9.68793in</Width>
+                              <ZIndex>6</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Tablix>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style />
+                        </Rectangle>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="list1_Details_Group">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Job_Name.Value</GroupExpression>
+                      <GroupExpression>=Fields!Job_Type.Value</GroupExpression>
+                      <GroupExpression>=Fields!Device_Name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Job_Name.Value</Value>
+                    </SortExpression>
+                    <SortExpression>
+                      <Value>=Fields!Device_Name.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <NoRowsMessage>=“No data available for the selected period.”</NoRowsMessage>
+            <DataSetName>ds_DataProtection_Details</DataSetName>
+            <Top>0.40542in</Top>
+            <Left>0.27371cm</Left>
+            <Height>1.45361in</Height>
+            <Width>9.74001in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <FontSize>8pt</FontSize>
+              <Color>#666666</Color>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <KeepTogether>true</KeepTogether>
+        <Top>3.26321cm</Top>
+        <Left>0.03387cm</Left>
+        <Height>4.72194cm</Height>
+        <Width>25.04862cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+    </ReportItems>
+    <Height>7.98515cm</Height>
+    <Style />
+  </Body>
+  <ReportParameters>
+    <ReportParameter Name="StartDate">
+      <DataType>DateTime</DataType>
+      <Prompt>Start Date:</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="EndDate">
+      <DataType>DateTime</DataType>
+      <Prompt>End Date:</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Customer_ID">
+      <DataType>String</DataType>
+      <Prompt>Customer:</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Device_Class_ID">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>-1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Device Class:</Prompt>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="Device_ID">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>-1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Devices:</Prompt>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="Rule_ID">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>-1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Rules:</Prompt>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="Subscription">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>none</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Subscription</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="HeaderImage">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>GetBrandingImage</DataSetName>
+          <ValueField>HeaderBrandingImageUrl</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>HeaderImage</Prompt>
+      <Hidden>true</Hidden>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>GetBrandingImage</DataSetName>
+          <ValueField>HeaderBrandingImageUrl</ValueField>
+          <LabelField>HeaderBrandingImageUrl</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="FooterImage">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>GetBrandingImage</DataSetName>
+          <ValueField>PoweredByBrandingImageUrl</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>FooterImage</Prompt>
+      <Hidden>true</Hidden>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>GetBrandingImage</DataSetName>
+          <ValueField>PoweredByBrandingImageUrl</ValueField>
+          <LabelField>PoweredByBrandingImageUrl</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="UpdatedStartDate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>GetStartDate</DataSetName>
+          <ValueField>UpdatedStartDate</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Date</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="UpdatedEndDate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>GetEndDate</DataSetName>
+          <ValueField>UpdatedEndDate</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Date1</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="BackupManagerJobType">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Backup Manager Event</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="NonBackupManagerData">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>dsCheckIfBackupmanagerOnly</DataSetName>
+          <ValueField>Result</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BackupStatus(ByVal code As Integer) As String
+	Dim Description As String
+	Select Case code
+		Case 1 
+			Description = "Success"
+		Case 2 
+			Description = "Warnings"
+		Case 3 
+			Description = "Failed"
+		Case Else 
+			Description = "Unknown"
+	End Select
+	Return Description
+End Function
+
+Public Function BackupResult(ByVal code As Integer) As String
+	Dim Description As String
+	Select Case code
+		Case 1 
+			Description = "Number of successful backups:"
+		Case 2 
+			Description = "Number of backups completed with warnings:"
+		Case 3 
+			Description = "Number of failed backups:"
+		Case Else 
+			Description = "Number of backups with unknown result:"
+	End Select
+	Return Description
+End Function
+
+Public Shared Function TranslateStatus(ByVal s As Integer) As String
+	Select case s 
+		case 1 
+			TranslateStatus = "Job terminated due to cancellation."
+		case 2 
+			TranslateStatus = "Job has been completed by the engine and is waiting final disposition."
+		case 3 
+			TranslateStatus = "Job terminated with success but there were some exceptions."
+		case 4 
+			TranslateStatus = "Job has been sent for execution."
+		case 5 
+			TranslateStatus = "Job is in a hold state."
+		case 6 
+			TranslateStatus = "Job terminated with an error."
+		case 7 
+			TranslateStatus = "The schedule for the task is invalid."
+		case 8 
+			TranslateStatus = "The time window is mutually exclusive thus job will never run."
+		case 9 
+			TranslateStatus = "Job is eligible for dispatch and is late."
+		case 10 
+			TranslateStatus = "Date of job makes it eligible to run, but time is not in window."
+		case 11 
+			TranslateStatus = "Job is ready, but dispatcher is paused."
+		case 12 
+			TranslateStatus = "The job needs to be dispositioned to an actual state."
+		case 13 
+			TranslateStatus = "The system forced recovery of the job."
+		case 14 
+			TranslateStatus = "Job has been disabled in the system."
+		case 15 
+			TranslateStatus = "The job will be restarted with check point restart enabled, this value is only set in the job history summary."
+		case 16 
+			TranslateStatus = "Job is currently running on server."
+		case 17 
+			TranslateStatus = "Job is eligible for dispatch."
+		case 18 
+			TranslateStatus = "The job has a due date in the future."
+		case 19 
+			TranslateStatus = "Job terminated with success."
+		case 20 
+			TranslateStatus = "Job is ready, but another higher precedence task is eligible to run."
+		case 21 
+			TranslateStatus = "The job was aborted due to Abort Threshold time-out."
+		case 22 
+			TranslateStatus = "The job needs to have the due date calculated."
+		case 23 
+			TranslateStatus = "The job is linked to another job so will not start until the master job is finished."
+	End Select
+End Function
+
+Public Function PageNumber()
+ Dim str as String
+ str = me.Report.Globals!PageNumber.ToString()
+ Return str
+End Function
+
+Public Function TotalPages()
+ Dim str as String
+ str = me.Report.Globals!TotalPages.ToString()
+ Return str
+End Function</Code>
+  <Width>25.0825cm</Width>
+  <Page>
+    <PageHeight>21.59cm</PageHeight>
+    <PageWidth>27.94cm</PageWidth>
+    <LeftMargin>1.27cm</LeftMargin>
+    <RightMargin>1.27cm</RightMargin>
+    <TopMargin>1.27cm</TopMargin>
+    <BottomMargin>1.27cm</BottomMargin>
+    <ColumnSpacing>1.27cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportID>22ee3470-98f4-43fd-ad9f-d28edcba0755</rd:ReportID>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://localhost/reportserver</rd:ReportServerUrl>
+</Report>

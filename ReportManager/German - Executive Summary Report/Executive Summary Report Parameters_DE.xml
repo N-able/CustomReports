@@ -1,0 +1,1410 @@
+<?xml version="1.0"?>
+<RMReport>
+  <RMReportProperties>
+    <ReportDescription>This report provides details of managed devices, warranties, security monitoring, application and license compliance, data protection, network reliability, server performance, and ticketing.</ReportDescription>
+    <Page>custom_report</Page>
+    <HelpKey>RC_CR</HelpKey>
+  </RMReportProperties>
+  <RMReportParameters>
+    <RMParameter>
+      <ParameterName>StartDate</ParameterName>
+      <DataType>DateTime</DataType>
+      <UserPrompt>Start Date:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>18</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>10</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>EndDate</ParameterName>
+      <DataType>DateTime</DataType>
+      <UserPrompt>End Date:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>18</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>11</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Customer_ID</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Customer:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>1</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>12</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeTitlePage</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Title Page:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>13</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeOverview</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Overview:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>14</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeOverallScore</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Overall Score:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>15</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeLetterGrade</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Use Letter Grade:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>16</DisplayOrder>
+      <VisibilityParameter>IncludeOverallScore</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>GradeNotes</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Notes To Include:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>17</DisplayOrder>
+      <VisibilityParameter>IncludeOverallScore</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeManagedDevices</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Managed Devices:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>18</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ManagedDevicesNotes</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Verwaltete Geräte sind in Ihrem Netzwerk gefundene Geräte, die proaktiv überwacht und für Sie verwaltet werden. Nicht verwaltete Geräte sind in Ihrem Netzwerk gefundene Computer, die nicht überwacht und verwaltet werden. In Ihrem Netzwerk sollten sich keine nicht verwalteten Geräte befinden.</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>19</DisplayOrder>
+      <VisibilityParameter>IncludeManagedDevices</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ManagedDevicesWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>20</DisplayOrder>
+      <VisibilityParameter>IncludeManagedDevices</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeProgramLevelDetails</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Program Level Details:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>21</DisplayOrder>
+      <VisibilityParameter>IncludeManagedDevices</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeProgramLevel</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Program Level</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>=Parameters!IncludeProgramLevelDetails.Value</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>1</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>0</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeManagedDevicesDetails</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Incident Details: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>22</DisplayOrder>
+      <VisibilityParameter>IncludeManagedDevices</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>NumberOfDevicesToInclude</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Number Of Devices Ranked by Incidents to Include:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>5</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>23</DisplayOrder>
+      <VisibilityParameter>IncludeManagedDevicesDetails</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeWarrantyStatus</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Warranty Status:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>24</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>WarrantyNotes</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Mit Gewährleistungen wird sichergestellt, dass die Geräte Ihrer Organisation bei einem Hardwareausfall  abgedeckt sind. Wir empfehlen für alle Geräte eine gültige Gewährleistung.</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>25</DisplayOrder>
+      <VisibilityParameter>IncludeWarrantyStatus</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>WarrantyStatusWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>26</DisplayOrder>
+      <VisibilityParameter>IncludeWarrantyStatus</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ShowUnknownWarranty</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Unknown Warranties:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>27</DisplayOrder>
+      <VisibilityParameter>IncludeWarrantyStatus</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ShowWarrantyDetails</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Warranty Status Details:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>28</DisplayOrder>
+      <VisibilityParameter>IncludeWarrantyStatus</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecurityMonitoring</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Security Monitoring: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>29</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>FirewallMonitoring</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Firewall Monitoring</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>30</DisplayOrder>
+      <VisibilityParameter>IncludeSecurityMonitoring</VisibilityParameter>
+      <ValidationGroup>1</ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AVMonitoring</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>AV Monitoring</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>31</DisplayOrder>
+      <VisibilityParameter>IncludeSecurityMonitoring</VisibilityParameter>
+      <ValidationGroup>1</ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>PatchMonitoring</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Patch Monitoring</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>32</DisplayOrder>
+      <VisibilityParameter>IncludeSecurityMonitoring</VisibilityParameter>
+      <ValidationGroup>1</ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecurityMonitoringNotes</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Mit der Sicherheitsüberwachung werden Computer in Ihrem Netzwerk vor Angriffen geschützt. Firewall-Vorfälle, Virenerkennung und fehlende Sicherheits-Patches sind Beispiele für Sicherheitsvorfälle.</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>33</DisplayOrder>
+      <VisibilityParameter>IncludeSecurityMonitoring</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecurityMonitoringWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>34</DisplayOrder>
+      <VisibilityParameter>IncludeSecurityMonitoring</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeFirewallAVPatchDetails</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Firewall, AV, &amp; Patch Details:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>35</DisplayOrder>
+      <VisibilityParameter>IncludeSecurityMonitoring</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeApplicationLicenseCompliance</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Application &amp; License Compliance: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>36</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ApplicationNotes</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Mit der Installation nicht kompatibler Anwendungen durch Benutzer werden Netzwerkressourcen verwendet und Haftungsprobleme können für Sie entstehen. Peer-to-Peer (P2P)-Anwendung sind beispielsweise nicht kompatible Anwendungen. In Ihrem Netzwerk sollten weder nicht lizenzierte noch nicht kompatible Anwendungen vorhanden sein.</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>37</DisplayOrder>
+      <VisibilityParameter>IncludeApplicationLicenseCompliance</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ApplicationWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>38</DisplayOrder>
+      <VisibilityParameter>IncludeApplicationLicenseCompliance</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeApplicationLicenseDetails</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Application &amp; License Details: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>39</DisplayOrder>
+      <VisibilityParameter>IncludeApplicationLicenseCompliance</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeDataProtection</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Data Protection: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>40</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>DataProtectionNotes</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Mit Backups wird sichergestellt, dass bei einem Serverausfall keine Daten Ihrer Organisation verlorengehen. Wir empfehlen häufige Backups auf kritischen Serverns.</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>41</DisplayOrder>
+      <VisibilityParameter>IncludeDataProtection</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>DataProtectionWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>42</DisplayOrder>
+      <VisibilityParameter>IncludeDataProtection</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeBackupDetails</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Backup Details: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>43</DisplayOrder>
+      <VisibilityParameter>IncludeDataProtection</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeNetworkReliability</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Network Reliability: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>44</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>NetworkReliabilityNotes</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Ihre Netzwerkstabilität beruht auf zwei metrischen Werten: die Möglichkeit des Zugriffs auf Netzwerkressourcen (Netzwerkverfügbarkeit) und die Fähigkeit dieser Netzwerkressourcen, auf Ihre Anfragen zu reagieren (Netzwerkkapazitätsauslastung). Die Verfügbarkeit Ihres Netzwerks sollte so nah wie möglich an 100 % liegen. Das heißt, Sie können jederzeit darauf zugreifen, wenn Sie sie benötigen. Die Kapazitätsauslastung sollte gering sein, das heißt, es ist Netzwerkbandbreite für die Reaktion auf Ihre Anfragen verfübar.</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>45</DisplayOrder>
+      <VisibilityParameter>IncludeNetworkReliability</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>NetworkReliabilityWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>46</DisplayOrder>
+      <VisibilityParameter>IncludeNetworkReliability</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>NetworkUtilizationLimit</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Critical Network Utilization Limit:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>80</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>47</DisplayOrder>
+      <VisibilityParameter>IncludeNetworkReliability</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeAvailabilityUtilizationDetails</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Availability &amp; Utilization Details:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>48</DisplayOrder>
+      <VisibilityParameter>IncludeNetworkReliability</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>NetworkReliabilityServices</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Services and Service Groupings:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>-1</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>1</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>2</ControlID>
+      <ParentParameterID>1</ParentParameterID>
+      <DisplayOrder>49</DisplayOrder>
+      <VisibilityParameter>IncludeAvailabilityUtilizationDetails</VisibilityParameter>
+      <ValidationGroup>2</ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>NetworkReliabilitySLA</ParameterName>
+      <DataType>Float</DataType>
+      <UserPrompt>SLA Availability %:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>85</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>50</DisplayOrder>
+      <VisibilityParameter>IncludeAvailabilityUtilizationDetails</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeServerPerformance</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Server Performance:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>51</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ServerPerformanceNotes</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt erfahren Sie, welche Server in Ihrem Netzwerk am stärksten ausgelastet sind. Server mit einer konstant hohen Auslastung können auf einen Leistungsengpass hinweisen, dem begegnet werden muss, sollte Ihre Organisation wachsen.</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>52</DisplayOrder>
+      <VisibilityParameter>IncludeServerPerformance</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ServerPerformanceWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>53</DisplayOrder>
+      <VisibilityParameter>IncludeServerPerformance</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ServerPerformanceNumberOfDevices</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Number of Devices to Include in Details:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>5</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>54</DisplayOrder>
+      <VisibilityParameter>IncludeServerPerformance</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ServerPerformanceUtilizationLimit</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Critical Server Utilization:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>80</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>55</DisplayOrder>
+      <VisibilityParameter>IncludeServerPerformance</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ServerPerformanceProximity</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Proximity to Limit:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>10</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>56</DisplayOrder>
+      <VisibilityParameter>IncludeServerPerformance</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>ServerPerformanceDeltaLimit</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Delta Limit:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>25</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>57</DisplayOrder>
+      <VisibilityParameter>IncludeServerPerformance</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeUtilizationDetails</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Utilization Details: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>58</DisplayOrder>
+      <VisibilityParameter>IncludeServerPerformance</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeTicketSummary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Ticket Summary: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>59</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TicketSummaryNotes</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt wird eine Übersicht über die während des Berichtszeitraums erstellten Tickets angezeigt. Diese umfassen die von Ihrem MSP (Managed Service Provider) (proaktiv) und die von Ihrer Organisation (reaktiv) erstellten Tickets.</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>60</DisplayOrder>
+      <VisibilityParameter>IncludeTicketSummary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TicketSummaryWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>61</DisplayOrder>
+      <VisibilityParameter>IncludeTicketSummary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TicketGracePeriod</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Ticket Grace Period:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>5</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>62</DisplayOrder>
+      <VisibilityParameter>IncludeTicketSummary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeTicketMetrics</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Ticket Issue Breakdown:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>67</DisplayOrder>
+      <VisibilityParameter>IncludeTicketSummary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeTicketDetails</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Ticket Details: </UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>68</DisplayOrder>
+      <VisibilityParameter>IncludeTicketSummary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeBreakdown</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Time Based SLA Breakdowns:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>69</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>StartHour</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Start Time:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>8</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>19</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>70</DisplayOrder>
+      <VisibilityParameter>IncludeBreakdown</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>EndHour</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>End Time:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>18</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>19</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>71</DisplayOrder>
+      <VisibilityParameter>IncludeBreakdown</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>WeekType</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Days:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Weekday</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>20</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>72</DisplayOrder>
+      <VisibilityParameter>IncludeBreakdown</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Subscription</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Subscription</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>none</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>1</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>73</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>PeriodType</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Period Type</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>="none"</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>1</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>2</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>HeaderImage</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>HeaderImage</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>GetBrandingImageHeaderBrandingImageUrl</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>1</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>3</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>FooterImage</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>FooterImage</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>GetBrandingImagePoweredByBrandingImageUrl</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>1</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>4</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>CustomerID</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>CustomerID - hidden</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>=Parameters!Customer_ID.Value</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>1</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>5</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>DevicesManagedPercentage</ParameterName>
+      <DataType>Float</DataType>
+      <UserPrompt>DevicesManagedPercentage</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>RPTES_ManagedDevices_ScoreDevices_Managed_Percentage</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>1</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>6</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>DevicesUnmanagedPercentage</ParameterName>
+      <DataType>Float</DataType>
+      <UserPrompt>DevicesUnmanagedPercentage</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>RPTES_ManagedDevices_ScoreDevices_Unmanaged_Percentage</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>1</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>7</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>DevicesManagedNumber</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>DevicesManagedNumber</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>RPTES_ManagedDevices_ScoreDevices_Managed_Number</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>1</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>8</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>DevicesUnmanagedNumber</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>DevicesUnmanagedNumber</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>RPTES_ManagedDevices_ScoreDevices_Unmanaged_Number</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>1</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>9</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>FilterByQueue</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Filter by Queue or Service Board:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>63</DisplayOrder>
+      <VisibilityParameter>IncludeTicketSummary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TicketQueue</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Queue or Service Board:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>-1</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>1</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>25</ControlID>
+      <ParentParameterID>1</ParentParameterID>
+      <DisplayOrder>64</DisplayOrder>
+      <VisibilityParameter>FilterByQueue</VisibilityParameter>
+      <ValidationGroup>3</ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>FilterByPriority</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Filter by Priority:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>65</DisplayOrder>
+      <VisibilityParameter>IncludeTicketSummary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TicketPriority</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Priority:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>-1</DefaultValue>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>1</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>24</ControlID>
+      <ParentParameterID>1</ParentParameterID>
+      <DisplayOrder>66</DisplayOrder>
+      <VisibilityParameter>FilterByPriority</VisibilityParameter>
+      <ValidationGroup>4</ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+  </RMReportParameters>
+</RMReport>

@@ -1,0 +1,636 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Language>en-US</Language>
+  <rd:GridSpacing>0.125in</rd:GridSpacing>
+  <Width>7.5in</Width>
+  <TopMargin>0.5in</TopMargin>
+  <BottomMargin>0.5in</BottomMargin>
+  <LeftMargin>0.5in</LeftMargin>
+  <RightMargin>0.5in</RightMargin>
+  <PageWidth>8.5in</PageWidth>
+  <PageHeight>11in</PageHeight>
+  <ReportParameters>
+    <ReportParameter Name="CustomerID">
+      <DataType>Integer</DataType>
+      <Prompt>Customer ID</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>paramDataSet</DataSetName>
+          <ValueField>value</ValueField>
+          <LabelField>value</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <Body>
+    <Height>0in</Height>
+    <Style />
+    <ReportItems>
+      <Textbox Name="Title">
+        <Value>Patch Overview</Value>
+        <CanGrow>true</CanGrow>
+        <Width>4.5in</Width>
+        <Height>0.375in</Height>
+        <Left>0.5in</Left>
+        <Top>0.375in</Top>
+        <Style>
+          <FontSize>18pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontStyle>Italic</FontStyle>
+          <FontWeight>Bold</FontWeight>
+        </Style>
+        <CustomProperties>
+          <CustomProperty>
+            <Name>rb:Watermark</Name>
+            <Value>Click to add title</Value>
+          </CustomProperty>
+        </CustomProperties>
+      </Textbox>
+      <Table Name="table">
+        <TableColumns>
+          <TableColumn>
+            <Width>1.375in</Width>
+            <Visibility>
+              <Hidden>=Fields!DeviceName.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.5in</Width>
+            <Visibility>
+              <Hidden>=Fields!OperatingSystem.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+          <TableColumn>
+            <Width>4in</Width>
+            <Visibility>
+              <Hidden>=Fields!Patch.IsMissing</Hidden>
+            </Visibility>
+          </TableColumn>
+        </TableColumns>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="DeviceName_Header">
+                      <Value>Device Name</Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!DeviceName.Value</SortExpression>
+                        <SortExpressionScope>table_DeviceName</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#528ae7</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="OperatingSystem_Header">
+                      <Value>Operating System</Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!OperatingSystem.Value</SortExpression>
+                        <SortExpressionScope>table_OperatingSystem</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#528ae7</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Description_Header">
+                      <Value>Patch</Value>
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Patch.Value</SortExpression>
+                        <SortExpressionScope>table_FactCimPatch</SortExpressionScope>
+                      </UserSort>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>#528ae7</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                        <Language>en-US</Language>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+          </TableRows>
+          <RepeatOnNewPage>true</RepeatOnNewPage>
+          <FixedHeader>true</FixedHeader>
+        </Header>
+        <TableGroups>
+          <TableGroup>
+            <Grouping Name="table_DeviceName">
+              <GroupExpressions>
+                <GroupExpression>=Fields!DeviceName.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=Fields!DeviceName.Value</SortExpression>
+              </SortBy>
+            </Sorting>
+          </TableGroup>
+          <TableGroup>
+            <Grouping Name="table_OperatingSystem">
+              <GroupExpressions>
+                <GroupExpression>=Fields!OperatingSystem.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=IIf(True, Fields!OperatingSystem.Value, Nothing)</SortExpression>
+              </SortBy>
+            </Sorting>
+          </TableGroup>
+        </TableGroups>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="DeviceName_Value">
+                      <Value>=Fields!DeviceName.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_DeviceName</HideDuplicates>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>=DataSources!dataSource1.DataSourceReference</ReportName>
+                          <Parameters>
+                            <Parameter Name="rs:EntityID">
+                              <Value>G6c48e04d-491a-4ff0-804e-085c29cf12cd</Value>
+                            </Parameter>
+                            <Parameter Name="rs:DrillType">
+                              <Value>Detail</Value>
+                            </Parameter>
+                            <Parameter Name="rs:Command">
+                              <Value>Drillthrough</Value>
+                            </Parameter>
+                            <Parameter Name="DrillthroughSourceQuery">
+                              <Value>=DataSets!dataSet.RewrittenCommandText</Value>
+                            </Parameter>
+                            <Parameter Name="DrillthroughContext">
+                              <Value>=CreateDrillthroughContext()</Value>
+                            </Parameter>
+                          </Parameters>
+                        </Drillthrough>
+                      </Action>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>=Iif( RowNumber("table_DeviceName") = CountRows("table_DeviceName"), "Solid", Nothing)</Bottom>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="OperatingSystem_Value">
+                      <Value>=Fields!OperatingSystem.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <HideDuplicates>table_OperatingSystem</HideDuplicates>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>=Iif( RowNumber("table_OperatingSystem") = CountRows("table_OperatingSystem"), "Solid", Nothing)</Bottom>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Description_Value">
+                      <Value>=Fields!Patch.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <BorderColor>
+                          <Default>#c0c0c0</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <Language>en-US</Language>
+                      </Style>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+          </TableRows>
+          <Grouping Name="table_FactCimPatch">
+            <GroupExpressions>
+              <GroupExpression>=Fields!FactCimPatch.Value</GroupExpression>
+            </GroupExpressions>
+          </Grouping>
+          <Sorting>
+            <SortBy>
+              <SortExpression>=Fields!Patch.Value</SortExpression>
+            </SortBy>
+            <SortBy>
+              <SortExpression>=IIf(True, Fields!expr1.Value, Nothing)</SortExpression>
+              <Direction>Descending</Direction>
+            </SortBy>
+          </Sorting>
+        </Details>
+        <NoRows>No data was found that matched your report criteria.</NoRows>
+        <DataSetName>dataSet</DataSetName>
+        <Width>0in</Width>
+        <Height>0in</Height>
+        <Left>0.5in</Left>
+        <Top>1.25in</Top>
+        <Style />
+      </Table>
+      <Image Name="image">
+        <Source>Embedded</Source>
+        <Value>powered_by_nable_120x12</Value>
+        <Sizing>Fit</Sizing>
+        <Width>1.25in</Width>
+        <Height>0.125in</Height>
+        <Left>6in</Left>
+        <Top>1.875in</Top>
+        <Style />
+      </Image>
+      <Image Name="image2">
+        <Source>Embedded</Source>
+        <Value>logo_160x40</Value>
+        <Sizing>Fit</Sizing>
+        <Width>1.625in</Width>
+        <Height>0.375in</Height>
+        <Left>5.5in</Left>
+        <Top>0.375in</Top>
+        <Style />
+      </Image>
+      <Textbox Name="textbox4">
+        <Value>This reports lists all installed patches on devices on the customer's network.</Value>
+        <CanGrow>true</CanGrow>
+        <Width>6.875in</Width>
+        <Height>0.25in</Height>
+        <Left>0.5in</Left>
+        <Top>0.875in</Top>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>3pt</PaddingLeft>
+          <PaddingRight>3pt</PaddingRight>
+          <PaddingTop>3pt</PaddingTop>
+          <PaddingBottom>3pt</PaddingBottom>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+      </Textbox>
+    </ReportItems>
+  </Body>
+  <DataSources>
+    <DataSource Name="dataSource1">
+      <rd:DataSourceID>60eb83e4-cd77-4f79-a443-38ea22358090</rd:DataSourceID>
+      <DataSourceReference>/Models/Warehouse</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dataSet">
+      <Query>
+        <DataSourceName>dataSource1</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rb="http://schemas.microsoft.com/sqlserver/2004/11/reportbuilder" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Fact Cim Patch--&gt;
+        &lt;EntityID&gt;Gfc762f98-86ac-4a59-a471-8cd35e688d3e&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="Device Name"&gt;
+          &lt;Expression Name="Device Name"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G51832fe8-265c-4624-b55d-8d662498a6ef&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Device Name--&gt;
+              &lt;AttributeID&gt;Gc3c246ca-9339-4611-aaaa-690ae9b50d4f&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Operating System"&gt;
+          &lt;Expression Name="Operating System"&gt;
+            &lt;Path&gt;
+              &lt;RolePathItem&gt;
+                &lt;!--Device--&gt;
+                &lt;RoleID&gt;G51832fe8-265c-4624-b55d-8d662498a6ef&lt;/RoleID&gt;
+              &lt;/RolePathItem&gt;
+            &lt;/Path&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Operating System--&gt;
+              &lt;AttributeID&gt;G3c76f36c-bf63-4687-bc11-e856e1128a1e&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+        &lt;Grouping Name="Fact Cim Patch"&gt;
+          &lt;Expression Name="Fact Cim Patch"&gt;
+            &lt;EntityRef&gt;
+              &lt;!--Fact Cim Patch--&gt;
+              &lt;EntityID&gt;Gfc762f98-86ac-4a59-a471-8cd35e688d3e&lt;/EntityID&gt;
+            &lt;/EntityRef&gt;
+          &lt;/Expression&gt;
+          &lt;Details&gt;
+            &lt;Expression Name="Patch"&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Description--&gt;
+                &lt;AttributeID&gt;G0dc9cabe-474e-448f-8cb9-695f3c626523&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+            &lt;Expression Name="expr1"&gt;
+              &lt;Path&gt;
+                &lt;RolePathItem&gt;
+                  &lt;!--Device--&gt;
+                  &lt;RoleID&gt;G51832fe8-265c-4624-b55d-8d662498a6ef&lt;/RoleID&gt;
+                &lt;/RolePathItem&gt;
+              &lt;/Path&gt;
+              &lt;AttributeRef&gt;
+                &lt;!--Device ID--&gt;
+                &lt;AttributeID&gt;G6408a2ed-ed27-4df4-bee5-5c25dd32976c&lt;/AttributeID&gt;
+              &lt;/AttributeRef&gt;
+            &lt;/Expression&gt;
+          &lt;/Details&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+      &lt;Filter&gt;
+        &lt;Expression Name="expr2"&gt;
+          &lt;Function&gt;
+            &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+            &lt;Arguments&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Path&gt;
+                        &lt;RolePathItem&gt;
+                          &lt;!--Customer--&gt;
+                          &lt;RoleID&gt;G2d795851-a185-45c8-99ce-2f3b8da0b93c&lt;/RoleID&gt;
+                        &lt;/RolePathItem&gt;
+                      &lt;/Path&gt;
+                      &lt;AttributeRef&gt;
+                        &lt;!--Customer ID--&gt;
+                        &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+                      &lt;/AttributeRef&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;ParameterRef&gt;
+                        &lt;ParameterName&gt;Customer ID&lt;/ParameterName&gt;
+                      &lt;/ParameterRef&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+                &lt;CustomProperties&gt;
+                  &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                &lt;/CustomProperties&gt;
+              &lt;/Expression&gt;
+              &lt;Expression&gt;
+                &lt;Function&gt;
+                  &lt;FunctionName&gt;And&lt;/FunctionName&gt;
+                  &lt;Arguments&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Path&gt;
+                              &lt;RolePathItem&gt;
+                                &lt;!--Device--&gt;
+                                &lt;RoleID&gt;G51832fe8-265c-4624-b55d-8d662498a6ef&lt;/RoleID&gt;
+                              &lt;/RolePathItem&gt;
+                            &lt;/Path&gt;
+                            &lt;AttributeRef&gt;
+                              &lt;!--Status--&gt;
+                              &lt;AttributeID&gt;Gedab4297-8300-435c-af1d-273f1fcf6db8&lt;/AttributeID&gt;
+                            &lt;/AttributeRef&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;Literal&gt;
+                              &lt;DataType&gt;String&lt;/DataType&gt;
+                              &lt;Value&gt;Active&lt;/Value&gt;
+                            &lt;/Literal&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                      &lt;CustomProperties&gt;
+                        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                      &lt;/CustomProperties&gt;
+                    &lt;/Expression&gt;
+                    &lt;Expression&gt;
+                      &lt;Function&gt;
+                        &lt;FunctionName&gt;Equals&lt;/FunctionName&gt;
+                        &lt;Arguments&gt;
+                          &lt;Expression&gt;
+                            &lt;Path&gt;
+                              &lt;RolePathItem&gt;
+                                &lt;!--Device--&gt;
+                                &lt;RoleID&gt;G51832fe8-265c-4624-b55d-8d662498a6ef&lt;/RoleID&gt;
+                              &lt;/RolePathItem&gt;
+                            &lt;/Path&gt;
+                            &lt;AttributeRef&gt;
+                              &lt;!--Is Managed Device Indicator--&gt;
+                              &lt;AttributeID&gt;G5ec54c18-778f-4100-86ca-aaef449c61ed&lt;/AttributeID&gt;
+                            &lt;/AttributeRef&gt;
+                          &lt;/Expression&gt;
+                          &lt;Expression&gt;
+                            &lt;Literal&gt;
+                              &lt;DataType&gt;String&lt;/DataType&gt;
+                              &lt;Value&gt;Managed Device&lt;/Value&gt;
+                            &lt;/Literal&gt;
+                          &lt;/Expression&gt;
+                        &lt;/Arguments&gt;
+                      &lt;/Function&gt;
+                      &lt;CustomProperties&gt;
+                        &lt;CustomProperty Name="qd:FilterCondition" /&gt;
+                      &lt;/CustomProperties&gt;
+                    &lt;/Expression&gt;
+                  &lt;/Arguments&gt;
+                &lt;/Function&gt;
+              &lt;/Expression&gt;
+            &lt;/Arguments&gt;
+          &lt;/Function&gt;
+          &lt;CustomProperties&gt;
+            &lt;CustomProperty Name="qd:Filter" /&gt;
+            &lt;CustomProperty Name="qd:ContextEntityID"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;Gfc762f98-86ac-4a59-a471-8cd35e688d3e&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+            &lt;CustomProperty Name="qd:AutoChangeBaseEntity" /&gt;
+            &lt;CustomProperty Name="qd:Design"&gt;
+              &lt;Value xsi:type="xsd:string"&gt;expr3&lt;/Value&gt;
+            &lt;/CustomProperty&gt;
+          &lt;/CustomProperties&gt;
+        &lt;/Expression&gt;
+      &lt;/Filter&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+  &lt;Parameters&gt;
+    &lt;Parameter Name="Customer ID"&gt;
+      &lt;DataType&gt;Integer&lt;/DataType&gt;
+    &lt;/Parameter&gt;
+  &lt;/Parameters&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="Customer ID">
+            <Value>=Parameters!CustomerID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+      <Fields>
+        <Field Name="DeviceName">
+          <DataField>Device Name</DataField>
+        </Field>
+        <Field Name="OperatingSystem">
+          <DataField>Operating System</DataField>
+        </Field>
+        <Field Name="FactCimPatch">
+          <DataField>Fact Cim Patch</DataField>
+        </Field>
+        <Field Name="Patch">
+          <DataField>Patch</DataField>
+        </Field>
+        <Field Name="expr1">
+          <DataField>expr1</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="paramDataSet">
+      <Query>
+        <DataSourceName>dataSource1</DataSourceName>
+        <CommandText>&lt;SemanticQuery xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qd="http://schemas.microsoft.com/sqlserver/2004/11/semanticquerydesign"&gt;
+  &lt;Hierarchies&gt;
+    &lt;Hierarchy&gt;
+      &lt;BaseEntity&gt;
+        &lt;!--Dim Customer--&gt;
+        &lt;EntityID&gt;G5d2d309e-f4c1-4d62-a323-b632888d2a60&lt;/EntityID&gt;
+      &lt;/BaseEntity&gt;
+      &lt;Groupings&gt;
+        &lt;Grouping Name="value"&gt;
+          &lt;Expression Name="value"&gt;
+            &lt;AttributeRef&gt;
+              &lt;!--Customer ID--&gt;
+              &lt;AttributeID&gt;Gf3420693-a06b-418f-866a-12d5f8e79d7c&lt;/AttributeID&gt;
+            &lt;/AttributeRef&gt;
+          &lt;/Expression&gt;
+        &lt;/Grouping&gt;
+      &lt;/Groupings&gt;
+    &lt;/Hierarchy&gt;
+  &lt;/Hierarchies&gt;
+&lt;/SemanticQuery&gt;</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="value">
+          <DataField>value</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <EmbeddedImages>
+    <EmbeddedImage Name="powered_by_nable_120x12">
+      <MIMEType>image/gif</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="logo_160x40">
+      <MIMEType>image/gif</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+</Report>

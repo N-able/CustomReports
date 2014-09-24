@@ -1,0 +1,2507 @@
+<?xml version="1.0"?>
+<RMReport>
+  <RMReportProperties>
+    <ReportDescription>This report allows you to provide a brief Scorecard view of current device statuses in key network areas, with options to include comprehensive summaries, work done and more details where applicable.</ReportDescription>
+    <Page>itsm</Page>
+    <HelpKey>RC_ESR</HelpKey>
+    <ExcludeFormats>
+      <Format>HTML</Format>
+      <Format>CSV</Format>
+      <Format>EXCEL</Format>
+      <Format>XML</Format>
+    </ExcludeFormats>
+  </RMReportProperties>
+  <RMReportParameters>
+    <RMParameter>
+      <ParameterName>Period</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Period:</UserPrompt>
+      <HintHelp>Select the reporting period: 1 Day, 7 Days, 14 Days, 30 Days, 90 Days, One Month, One Quarter, One Year.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Last Month</DefaultValue>
+      <AvailableValues>config.dbo.uspGetPeriodPickList</AvailableValues>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>27</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>0</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>StartDate</ParameterName>
+      <DataType>DateTime</DataType>
+      <UserPrompt>Start Date:</UserPrompt>
+      <HintHelp>Select a start date for the reporting period. The reporting period starts at 12:00 am on the selected start date, unless a start time is specified for time based SLA breakdowns.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>28</ControlID>
+      <ParentParameterID>27</ParentParameterID>
+      <DisplayOrder>1</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>EndDate</ParameterName>
+      <DataType>DateTime</DataType>
+      <UserPrompt>End Date:</UserPrompt>
+      <HintHelp>Select an end date for the reporting period. The reporting period ends at 11:59 pm on the selected end date, unless an End Time is specified for time based SLA breakdowns.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>28</ControlID>
+      <ParentParameterID>27</ParentParameterID>
+      <DisplayOrder>2</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Subscription</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Subscription</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>none</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>1</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>3</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Customer_ID</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Customer:</UserPrompt>
+      <HintHelp>Select the customer for which you would like to generate the report.</HintHelp>
+      <HasDefaultValue>false</HasDefaultValue>
+      <DefaultValue></DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>1</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>4</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeTitlePage</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Title Page:</UserPrompt>
+      <HintHelp>Select the checkbox to include a title page. The title page includes the title, the report period, the name of the customer for which the report has been prepared, and a branded image, which you can customize through the Administration Console.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>7</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeToC</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Table of Contents:</UserPrompt>
+      <HintHelp>Select the checkbox to include Table of Content page that lists all report sections.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>8</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeOverallScore</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Overall Score:</UserPrompt>
+      <HintHelp>Select the checkbox to include an overall score. The overall score is the weighted average score of all the sections that have been included in the report.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>9</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>NotesFromMSP</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Notes to Include:</UserPrompt>
+      <HintHelp>Specify the text you would like to appear on the Overall Score page under the heading: "Comments from (YourCompanyName)". If you do not specify anything, the heading will not appear in the report.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>10</DisplayOrder>
+      <VisibilityParameter>IncludeOverallScore</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>UseLetterScore</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Use Letter Grade:</UserPrompt>
+      <HintHelp>Select the checkbox to display the overall score as a letter (A-F). If you clear the checkbox, the score will appear as a percentage (100-0).</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>11</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludePageBreak</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Start Scorecard on New Page:</UserPrompt>
+      <HintHelp>Select the checkbox to put a page break between Overall Score and the Scorecard sections of the rest of the report.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>12</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>FailedLimit</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Auto-Add Summaries Failing a Score Of:</UserPrompt>
+      <HintHelp>Select a percentage. Scores for all sections will be compared to this percentage. Those with a score below this percentage will have a summary section automatically included in the report to provide support for failing scores. To generate the shortest report possible, set this to "0". This will ensure that the report generates only the Scorecard for each section.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>60</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>13</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeActionable</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Actionable Findings:</UserPrompt>
+      <HintHelp>Select the checkbox to include an Actionable Findings /Results heading for each category. Under the heading, there is blank space for MSP notes to be written.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>15</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeAM_DevUnMgmt</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Devices Under Management:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Devices Under Management. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>16</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_DevUnMgmtAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>17</DisplayOrder>
+      <VisibilityParameter>IncludeAM_DevUnMgmt</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_DevUnMgmtScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Verwaltete Geräte werden proaktiv überwacht und für Sie verwaltet.  Im Folgenden finden Sie eine Darstellung der augenblicklich verwalteten Geräteklassen im Vergleich zur Gesamtzahl aller Geräte in Ihrer Umgebung einschließlich Änderungen in diesem Berichtszeitraum.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>18</DisplayOrder>
+      <VisibilityParameter>AM_DevUnMgmtAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_DevUnMgmtSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt erfahren Sie mehr zu den verwalteten und nicht verwalteten Geräten in Ihrem Netzwerk. Verwaltete Geräte werden proaktiv überwacht und für Sie verwaltet. Nicht verwaltete Geräte werden nicht proaktiv überwacht oder verwaltet.  Im Idealfall werden alle Geräte von Ihrem Dienstanbieter verwaltet.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>19</DisplayOrder>
+      <VisibilityParameter>AM_DevUnMgmtAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_DevUnMgmt_Weight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>20</DisplayOrder>
+      <VisibilityParameter>AM_DevUnMgmtAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeAM_DevUnMgmt_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary: </UserPrompt>
+      <HintHelp>Select the checkbox to include Scope—Managed versus unmanaged devices on your network, and Work—Added or Removed Devices, Remote Control Summary.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>21</DisplayOrder>
+      <VisibilityParameter>IncludeAM_DevUnMgmt</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeAM_DevUnMgmt_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details:</UserPrompt>
+      <HintHelp>Select the checkbox to include detailed inventory tables: Network Hardware Inventory, Mobile Device Inventory, Unmanaged Device Inventory.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>22</DisplayOrder>
+      <VisibilityParameter>IncludeAM_DevUnMgmt_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeAM_SerNetWarr</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Server and Network Warranty:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Server and Network Warranty. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>23</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_SerNetWarrAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>24</DisplayOrder>
+      <VisibilityParameter>IncludeAM_SerNetWarr</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_SerNetWarrScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Ausfallzeiten geschäftskritischer Geräte wie Server, Switches und Router können ernste Folgen für das Unternehmen haben. Daher müssen die Gewährleistungen immer auf dem neusten Stand sein. Im Folgenden finden Sie den aktuellen Status der Gewährleistungen für Ihre Server- und Ihre Netzwerk-Hardware.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>25</DisplayOrder>
+      <VisibilityParameter>AM_SerNetWarrAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_SerNetWarrSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt erfahren Sie mehr zu den Gewährleistungen, die für geschäftskritische Netzwerksysteme wie Web-Server, Mail-Server, Switches und Router gelten. In den meisten Fällen ist eine größer Anzahl an Benutzern von diesen Systemen und Geräten betroffen; ein Ausfall dieser kritischen Dienste kann daher schwerwiegende Folgen für das Unternehmen haben. Die Gewährleistungen dieser kritischen Systeme sollten daher unbedingt gültig sein, da sie rasche Abhilfe ermöglichen.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>26</DisplayOrder>
+      <VisibilityParameter>AM_SerNetWarrAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_SerNetWarrWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score: </UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>27</DisplayOrder>
+      <VisibilityParameter>AM_SerNetWarrAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_SerNetWarrShowUnknown</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Show Unknown Warranties: </UserPrompt>
+      <HintHelp>Select the checkbox to include devices with unknown warranty expiry dates.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>28</DisplayOrder>
+      <VisibilityParameter>AM_SerNetWarrAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeAM_SerNetWarr_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary: </UserPrompt>
+      <HintHelp>Select the checkbox to include Scope—Server and Network Warranty Status, and Work—Managed servers, switches and routers and their warranty status.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>29</DisplayOrder>
+      <VisibilityParameter>IncludeAM_SerNetWarr</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeAM_SerNetWarr_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details:</UserPrompt>
+      <HintHelp>Select the checkbox to include details of managed devices and their warranties. Device with warranties expired or soon to expire are highlighted.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>30</DisplayOrder>
+      <VisibilityParameter>IncludeAM_SerNetWarr_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeAM_WorkLapWarr</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Workstation and Laptop Warranty:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Workstation and Laptop Warranty. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>31</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_WorkLapWarrAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>32</DisplayOrder>
+      <VisibilityParameter>IncludeAM_WorkLapWarr</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_WorkLapWarrScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Auch Ihre Desktop-Systeme sollten über gültige Gewährleistungen verfügen, um rasche Abhilfe und Ersatzkomponenten sicherzustellen. Im Folgenden finden Sie den aktuellen Status der Gewährleistungen für Ihre Workstations und Notebooks.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>33</DisplayOrder>
+      <VisibilityParameter>AM_WorkLapWarrAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_WorkLapWarrSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text:</UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt erfahren Sie mehr zu den Gewährleistungen für Workstations, Notebooks und mobilen Geräte.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>34</DisplayOrder>
+      <VisibilityParameter>AM_WorkLapWarrAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_WorkLapWarrWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score: </UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>35</DisplayOrder>
+      <VisibilityParameter>AM_WorkLapWarrAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>AM_WorkLapWarrShowUnknown</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Show Unknown Warranties: </UserPrompt>
+      <HintHelp>Select the checkbox to include devices with unknown warranty expiry dates.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>36</DisplayOrder>
+      <VisibilityParameter>AM_WorkLapWarrAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeAM_WorkLapWarr_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary:</UserPrompt>
+      <HintHelp>Select the checkbox to include Scope—Workstation, laptop and Mobile Warranty status, and Work—Workstations, laptops and mobile devices and their warranty status.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>37</DisplayOrder>
+      <VisibilityParameter>IncludeAM_WorkLapWarr</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeAM_WorkLapWarr_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details:</UserPrompt>
+      <HintHelp>Select the checkbox to include details of managed devices and their warranties. Device with warranties expired or soon to expire are highlighted.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>38</DisplayOrder>
+      <VisibilityParameter>IncludeAM_WorkLapWarr_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecMon_AV</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Antivirus:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Antivirus solutions. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>39</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_AVAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>40</DisplayOrder>
+      <VisibilityParameter>IncludeSecMon_AV</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_AVScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Mit dem Netzwerk verbundene Geräte ohne Virenschutz auf dem neusten Stand sind Angriffen ausgesetzt und stellen ein potentielles Sicherheitsrisiko dar. Im Folgenden finden Sie einen Überblick über Ihren Virenschutz und inwieweit die Definitionen auf dem neusten Stand sind.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>41</DisplayOrder>
+      <VisibilityParameter>SecMon_AVAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_AVSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt erfahren Sie, wie viele Geräte auf Ihrem Netzwerk über einen funktionstüchtigen Virenschutz auf dem neusten Stand verfügen. Virenschutzsoftware identifiziert und entfernt Malware einschließlich Spyware, bösartige Dialer, Hacker-Tools, Hoaxes und versuchter Diebstahl von Daten. Mit dem Netzwerk verbundene Geräte ohne Virenschutz auf dem neusten Stand sind Angriffen ausgesetzt und stellen ein potentielles Sicherheitsrisiko dar. Es ist daher von entscheidender Bedeutung, dass der Virenschutz für jedes Gerät auf dem neusten Stand ist.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>42</DisplayOrder>
+      <VisibilityParameter>SecMon_AVAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_AVWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>43</DisplayOrder>
+      <VisibilityParameter>SecMon_AVAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecMon_AV_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary: </UserPrompt>
+      <HintHelp>Select the checkbox to include Scope—Antivirus solutions on the network, and Work—Updates Completed, Threats found and Scans Completed, and Current Status—Updates, scanning, top 10 devices with infections.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>44</DisplayOrder>
+      <VisibilityParameter>IncludeSecMon_AV</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecMon_AV_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details: </UserPrompt>
+      <HintHelp>Select the checkbox to include details of the current status of antivirus solutions by device.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>45</DisplayOrder>
+      <VisibilityParameter>IncludeSecMon_AV_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecMon_WinPatch</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Windows Patching:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Windows Patching. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>46</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_WinPatchAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>47</DisplayOrder>
+      <VisibilityParameter>IncludeSecMon_WinPatch</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_WinPatchScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Mit dem Netzwerk verbundene Windows-Geräte ohne Windows-Patches auf dem neusten Stand stellen ein potentielles Sicherheitsrisiko dar. Im Folgenden finden Sie eine Übersicht des Abdeckungsbereichs der Windows-Patch-Verwaltung und inwieweit die Geräte auf dem neusten Stand sind.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>48</DisplayOrder>
+      <VisibilityParameter>SecMon_WinPatchAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_WinPatchSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text:</UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt erfahren Sie mehr zu den Windows-Geräten in Ihrem Netzwerk und ihrem Patch-Status. Windows-Patches auf dem neusten Stand, die auf Ihre Geräte angewendet werden, stellen sicher, dass bekannte Fehler korrigiert und kritische, Ihre Sicherheit beeinträchtigende Sicherheitslücken geschlossen werden. Mit dem Netzwerk verbundene Windows-Geräte ohne Windows-Patches auf dem neusten Stand stellen ein potentielles Sicherheitsrisiko dar. Es ist daher von entscheidender Bedeutung, dass für jedes Windows-Gerät die aktuellsten Patches installiert sind.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>49</DisplayOrder>
+      <VisibilityParameter>SecMon_WinPatchAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_WinPatchWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>50</DisplayOrder>
+      <VisibilityParameter>SecMon_WinPatchAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecMon_WinPatch_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary: </UserPrompt>
+      <HintHelp>Select the checkbox to include Scope—Devices monitored for Windows patches and their patch statuses, and devices unmonitored for Windows patch status on the network, and Work—Installed Windows patches by device class and patch statuses.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>51</DisplayOrder>
+      <VisibilityParameter>IncludeSecMon_WinPatch</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecMon_WinPatch_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details:</UserPrompt>
+      <HintHelp>Select the checkbox to include details of the current status of missing and failed patches.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>52</DisplayOrder>
+      <VisibilityParameter>IncludeSecMon_WinPatch_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecMon_3PPatch</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Third Party Patching:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Third Party Patching. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>53</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_3PPatchAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>54</DisplayOrder>
+      <VisibilityParameter>IncludeSecMon_3PPatch</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_3PPatchScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Patches von Drittanbietern lösen bekannte und Sicherheitsprobleme von Nicht-Microsoft-Anwendungen. Im Folgenden finden Sie eine Übersicht des Abdeckungsbereichs der Patch-Verwaltung durch Drittanbieter und inwieweit die Geräte auf dem neusten Stand sind.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>55</DisplayOrder>
+      <VisibilityParameter>SecMon_3PPatchAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_3PPatchSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt finden Sie mehr zu Patches von Drittanbietern für Standardunternehmensprodukte von Anbietern wie Adobe, Apple oder Java. Genau wie Microsoft stellen diese Anbieter regelmäßig Sicherheitsaktualisierungen und Patches für ihre Anwendungen und Tools zur Verfügung. Patches von Drittanbietern lösen bekannte und Sicherheitsprobleme und beseitigen unübersichtliche Popup-Meldungen, die die Benutzerfreundlichkeit beeinträchtigen. Die Verwendung der jeweils neusten Patches von Drittanbietern ist eine wichtige Bedingung für eine sichere und verlässliche Softwareumgebung.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>56</DisplayOrder>
+      <VisibilityParameter>SecMon_3PPatchAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_3PPatchWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score: </UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>57</DisplayOrder>
+      <VisibilityParameter>SecMon_3PPatchAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecMon_3PPatch_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary: </UserPrompt>
+      <HintHelp>Select the checkbox to include Scope—Devices monitored for Third Party patches and their patch statuses, and devices unmonitored for Third Party patch status on the network, and Work—Third Party patches installed per Device Class and statuses.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>58</DisplayOrder>
+      <VisibilityParameter>IncludeSecMon_3PPatch</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecMon_3PPatch_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details:</UserPrompt>
+      <HintHelp>Select the checkbox to include details of the current status of missing and failed patches.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>59</DisplayOrder>
+      <VisibilityParameter>IncludeSecMon_3PPatch_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecMon_HFire</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Hardware Firewalls:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Hardware Firewalls. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>60</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_HFireAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>61</DisplayOrder>
+      <VisibilityParameter>IncludeSecMon_HFire</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_HFireScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Die Überwachung des Firewall-Status auf Ihrem Netzwerk ist eine wichtige Voraussetzung für die Sicherheit Ihres Netzwerks. Im Folgenden finden Sie eine Übersicht der überwachten Firewalls im Vergleich zu der Gesamtanzahl der erkannten Hardware-Firewalls.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>62</DisplayOrder>
+      <VisibilityParameter>SecMon_HFireAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_HFireSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt erfahren Sie, welchen Gefahren Ihre Hardware-Firewall ausgesetzt ist. Hardware-Firewalls schützen alle Geräte in Ihrem Netzwerk gegen unerlaubte Verwendung und Zugriff. Dazu zählen Sicherheitsverletzungen durch Hacker, Viren und andere bösartige Aktivitäten.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>63</DisplayOrder>
+      <VisibilityParameter>SecMon_HFireAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>SecMon_HFireWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score: </UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>64</DisplayOrder>
+      <VisibilityParameter>SecMon_HFireAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeSecMon_HFire_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary:</UserPrompt>
+      <HintHelp>Select the checkbox to include Scope—Devices monitored and unmonitored for Firewall protection, and their current status by category and incident.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>65</DisplayOrder>
+      <VisibilityParameter>IncludeSecMon_HFire</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeDP</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Data Protection:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Data Protection. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>66</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>DPAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>67</DisplayOrder>
+      <VisibilityParameter>IncludeDP</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>DPScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Wir empfehlen Ihre Daten durch häufige Backups zu sichern, um zu gewährleisten, dass bei einem Serverausfall keine Daten Ihrer Organisation verlorengehen. Im Folgenden finden Sie eine Darstellung Ihrer laufenden Backups einschließlich der erfolgreich abgeschlossenen Vorgänge, Warnungen und Fehler im Vergleich zu der Gesamtanzahl der geplanten Backup-Aufträge.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>68</DisplayOrder>
+      <VisibilityParameter>DPAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>DPSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt erfahren Sie, wie gut Ihre Daten gesichert sind. Backups ermöglichen eine schnelle Reaktion und Wiederherstellung im Anschluss an eine Unterbrechung und einen Datenverlust, die ansonsten die Integrität Ihrer Geschäftstätigkeit beeinträchtigen könnten. Wir empfehlen Ihre Daten durch häufige Backups zu sichern, um zu gewährleisten, dass bei einem Serverausfall keine Daten Ihrer Organisation verlorengehen.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>69</DisplayOrder>
+      <VisibilityParameter>DPAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>DPWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>70</DisplayOrder>
+      <VisibilityParameter>DPAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeDP_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary:</UserPrompt>
+      <HintHelp>Select the checkbox to include Scope—Devices monitored and unmonitored for Data Protection, and Work—Backups completed, backup results and Top 10 devices with failed backups.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>71</DisplayOrder>
+      <VisibilityParameter>IncludeDP</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeDP_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details:</UserPrompt>
+      <HintHelp>Select the checkbox to include details daily data backups.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>72</DisplayOrder>
+      <VisibilityParameter>IncludeDP_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeBSA</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Business Service Availability:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Business Service Availability. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>73</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Service_ID</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Services and Service Groupings:</UserPrompt>
+      <HintHelp>Select the services and service groupings to include in the Business Service Availability details subsection.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>-1</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>1</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>2</ControlID>
+      <ParentParameterID>1</ParentParameterID>
+      <DisplayOrder>74</DisplayOrder>
+      <VisibilityParameter>IncludeBSA</VisibilityParameter>
+      <ValidationGroup>1</ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>BSAAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>75</DisplayOrder>
+      <VisibilityParameter>IncludeBSA</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>BSAScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary:</UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Ausfallzeiten bei Unternehmensdiensten können zu Umsatz- und Produktivitätseinbußen führen. Im Folgenden finden Sie eine Darstellung der Laufzeit kritischer Anwendungen in Ihrer Umgebung wie z. B. Ihre Website oder Ihre Unternehmens-E-Mail.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>76</DisplayOrder>
+      <VisibilityParameter>BSAAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>BSASummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt finden Sie mehr zur Verfügbarkeit kritischer Unternehmensdienste wie z. B. Ihre Website oder Ihre Unternehmens-E-Mail.  Die Laufzeit dieser Dienste sollte so nah wie möglich an 100 % liegen, was die Zuverlässigkeit und Verfügbarkeit der für Unternehmen wichtigen Ressourcen belegt. Ausfallzeiten bei jedem dieser Unternehmensdienste können zu Umsatz- und Produktivitätseinbußen führen.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>77</DisplayOrder>
+      <VisibilityParameter>BSAAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>BSAWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score: </UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>78</DisplayOrder>
+      <VisibilityParameter>BSAAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>BSASlaAvail</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>SLA Availability %: </UserPrompt>
+      <HintHelp>Specify the percentage (within 2 decimal places) of the Service Level Agreement for Services or Service Groupings availability to which you would like to compare the actual availability.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>85</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>79</DisplayOrder>
+      <VisibilityParameter>BSAAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeBSA_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary:</UserPrompt>
+      <HintHelp>Select the checkbox to include the availability status of business services such as your website and corporate email, a Service Availability Details table with service availabilities by service (with comparison to SLA) and the top 10 devices with the lowest service availabilities.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>80</DisplayOrder>
+      <VisibilityParameter>IncludeBSA</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeBSA_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details: </UserPrompt>
+      <HintHelp>Select the checkbox to increase the granularity of the Service Availability Details table by showing service availability by device as well as service.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>81</DisplayOrder>
+      <VisibilityParameter>IncludeBSA_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeNR</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Network Reliability:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Network Reliability. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>82</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>NRAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>83</DisplayOrder>
+      <VisibilityParameter>IncludeNR</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>NRScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Ausfallzeiten von Server- und Netzwerkinfrastrukturen können ernste Folgen für das Unternehmen haben. Im Folgenden finden Sie eine Darstellung der Laufzeit kritischer Hardware in Ihrer Umgebung wie z. B. Firewalls, Router und wichtige Server.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>84</DisplayOrder>
+      <VisibilityParameter>NRAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>NRSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt finden Sie mehr zur Verfügbarkeit Ihrer wichtigsten Netzwerkressourcen wie z. B. Server, Switches und Router. Die Verfügbarkeit dieser Ressourcen sollte so nah wie möglich an 100 % liegen.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>85</DisplayOrder>
+      <VisibilityParameter>NRAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>NRWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>86</DisplayOrder>
+      <VisibilityParameter>NRAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeNR_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary: </UserPrompt>
+      <HintHelp>Select the checkbox to include the availability status of servers, switches, and routers, and details of the top 10 devices by lowest uptime.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>87</DisplayOrder>
+      <VisibilityParameter>IncludeNR</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeNR_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details: </UserPrompt>
+      <HintHelp>Select the checkbox to include a Network Utilization chart.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>88</DisplayOrder>
+      <VisibilityParameter>IncludeNR_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludePer_Ser</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Server Performance:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Server Performance. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>89</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Per_SerAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>90</DisplayOrder>
+      <VisibilityParameter>IncludePer_Ser</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Per_SerScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Server, die ihre Kapazitätsgrenzen erreichen oder sogar überschreiten, können zu unzureichenden Reaktionszeiten führen. Im Folgenden finden Sie eine Darstellung der Serverinfrastruktur basierend auf dem durchschnittlichen Ressourcenverbrauch im Berichtszeitraum.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>91</DisplayOrder>
+      <VisibilityParameter>Per_SerAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Per_SerSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text:</UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt erfahren Sie, welche Server in Ihrem Netzwerk am stärksten ausgelastet sind.  Server werden von mehreren Benutzern verwendet. Es kann daher schwerwiegende Auswirkungen für das Unternehmen haben, wenn ein kritischer Server keine ausreichenden Reaktionszeiten bieten kann. Server mit einer konstant hohen Auslastung können auf einen Leistungsengpass hinweisen, dem begegnet werden muss, sollte Ihre Organisation wachsen. Sie können den Bedarf an einem Server-Upgrade einschätzen, indem Sie einzelne Aspekte ihrer Leistung im Laufe der Zeit verfolgen.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>92</DisplayOrder>
+      <VisibilityParameter>Per_SerAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Per_SerWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score: </UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>93</DisplayOrder>
+      <VisibilityParameter>Per_SerAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludePer_Ser_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary: </UserPrompt>
+      <HintHelp>Select the checkbox to include server performance status, the top 10 devices exceeding capacity, and top 5 devices by overall change in utilization.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>94</DisplayOrder>
+      <VisibilityParameter>IncludePer_Ser</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludePer_Ser_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details: </UserPrompt>
+      <HintHelp>Select the checkbox to include the following charts: Server Exceeding Capacity and Servers Reaching Capacity.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>95</DisplayOrder>
+      <VisibilityParameter>IncludePer_Ser_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludePer_Work</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Workstation Performance:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Workstation Performance. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>96</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Per_WorkAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>97</DisplayOrder>
+      <VisibilityParameter>IncludePer_Work</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Per_WorkScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary:</UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Workstations, die ihre Kapazitätsgrenzen erreichen oder sogar überschreiten, werden langsamer und lösen Dienstprobleme aus. Letztlich führen sie zu weniger produktiven Mitarbeitern.  Im Folgenden finden Sie eine Darstellung von Workstations und Notebooks basierend auf dem durchschnittlichen Ressourcenverbrauch im Berichtszeitraum.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>98</DisplayOrder>
+      <VisibilityParameter>Per_WorkAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Per_WorkSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt erfahren Sie, welche Workstations in Ihrem Netzwerk am stärksten ausgelastet sind. Workstations werden nur von einem einzelnen Benutzer verwendet und sind deshalb weniger kritisch als Server. Wenn sie ihre Kapazitätsgrenzen erreichen oder sogar überschreiten, werden sie jedoch langsamer und lösen Dienstprobleme aus. Letztlich führen sie zu weniger produktiven Mitarbeitern. Sie können den Bedarf an Upgrades für Ihre Workstations einschätzen, indem Sie einzelne Aspekte ihrer Leistung im Laufe der Zeit verfolgen.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>99</DisplayOrder>
+      <VisibilityParameter>Per_WorkAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>Per_WorkWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>100</DisplayOrder>
+      <VisibilityParameter>Per_WorkAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludePer_Work_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary:</UserPrompt>
+      <HintHelp>Select the checkbox to include workstation and laptop performance status, the top 10 devices exceeding capacity, and top 5 devices by overall change in utilization.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>101</DisplayOrder>
+      <VisibilityParameter>IncludePer_Work</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludePer_Work_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details: </UserPrompt>
+      <HintHelp>Select the checkbox to include the following charts: Workstation/Laptops Exceeding Capacity and Workstation/Laptops Reaching Capacity.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>102</DisplayOrder>
+      <VisibilityParameter>IncludePer_Work_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeTS</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Ticket Summary:</UserPrompt>
+      <HintHelp>Select the checkbox to include a Scorecard for Ticket Summary. It will contribute its weighted score to the overall score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>on</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>103</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TSAdvSet</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Advanced Settings: </UserPrompt>
+      <HintHelp>Select the checkbox to display more configuration options for this section.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>104</DisplayOrder>
+      <VisibilityParameter>IncludeTS</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TSScorecardText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Scorecard Summary: </UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Scorecard for this section. Note: To leave out the Scorecard Summary, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Für Probleme in Ihrer Umgebung werden entsprechend Tickets erstellt. In Folgenden finden Sie eine Übersicht über die während des Berichtszeitraums erstellten und gelösten Tickets angezeigt.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>105</DisplayOrder>
+      <VisibilityParameter>TSAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TSSummaryText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Preamble Text:</UserPrompt>
+      <HintHelp>Specify the text you would like to appear as an introduction to the Summary for this section. Note: To leave out the Preamble Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>In diesem Abschnitt wird eine Übersicht über die während des Berichtszeitraums erstellten Tickets angezeigt. Diese umfassen die von Ihrem MSP (Managed Service Provider) (proaktiv) und die von Ihrer Organisation (reaktiv) erstellten Tickets.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>106</DisplayOrder>
+      <VisibilityParameter>TSAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TSWeight</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Weight the Score:</UserPrompt>
+      <HintHelp>Assign a weight which will determine the contribution of this section to the Overall Score.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>50</DefaultValue>
+      <AvailableValues>0;100;5</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>107</DisplayOrder>
+      <VisibilityParameter>TSAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TSGrace</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Ticket Grace Period: </UserPrompt>
+      <HintHelp>Specify a number of days between 0 and 120 to provide a grace period, which will shift the reporting period back in time by the selected number of days. The default is 5 days. A grace period ensures that the score (the ratio of tickets opened to tickets closed) does not include open tickets that do not have a reasonable chance of resolution, such as tickets opened at the end of the month or, if the month ends on a weekend, tickets opened that weekend.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>0</DefaultValue>
+      <AvailableValues>0;120;1</AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>26</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>108</DisplayOrder>
+      <VisibilityParameter>TSAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TSFilterQueue</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Filter by Queue or Service Board: </UserPrompt>
+      <HintHelp>Select the checkbox to display a list of Ticket Queues (Autotask) and Services Boards (ConnectWise) available to you.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>109</DisplayOrder>
+      <VisibilityParameter>TSAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TicketQueue</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Queue or Service Board:</UserPrompt>
+      <HintHelp>Select at least one Queue or Service Board from this list.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>-1</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>1</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>25</ControlID>
+      <ParentParameterID>1</ParentParameterID>
+      <DisplayOrder>110</DisplayOrder>
+      <VisibilityParameter>TSFilterQueue</VisibilityParameter>
+      <ValidationGroup>TicketQueue Validation
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TSFilterPriority</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Filter by Priority: </UserPrompt>
+      <HintHelp>Select the checkbox to display a list of ticket priorities available to you.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>111</DisplayOrder>
+      <VisibilityParameter>TSAdvSet</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>TicketPriority</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Priority: </UserPrompt>
+      <HintHelp>Select at least one Priority from this list.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>-1</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>1</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>24</ControlID>
+      <ParentParameterID>1</ParentParameterID>
+      <DisplayOrder>112</DisplayOrder>
+      <VisibilityParameter>TSFilterPriority</VisibilityParameter>
+      <ValidationGroup>TicketPriority Validation
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeTS_Summary</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Summary: </UserPrompt>
+      <HintHelp>Select the checkbox to include Work—ticket types, top users and top devices creating tickets, ticket issue breakdown, and opened versus closed tickets, open ticket status, and open ticket priority.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>113</DisplayOrder>
+      <VisibilityParameter>IncludeTS</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeTS_Details</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Details: </UserPrompt>
+      <HintHelp>Select the checkbox to include a Details section, with the following tables: Tickets Opened this Reporting Period, Outstanding open Tickets from Previous Periods.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>114</DisplayOrder>
+      <VisibilityParameter>IncludeTS_Summary</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>IncludeBreakdown</ParameterName>
+      <DataType>Boolean</DataType>
+      <UserPrompt>Include Time Based SLA Breakdowns:</UserPrompt>
+      <HintHelp>Select the checkbox to report server utilization in the Server Performance section and bandwidth utilization in the Network Availability section for the time of the day and days of the week as specified in your customer's Service Level Agreement (SLA).</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>false
+      </DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>17</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>115</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>1</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>StartHour</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>Start Time:</UserPrompt>
+      <HintHelp>Specify the start time for a specific period during the day on which to report.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>8</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>19</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>116</DisplayOrder>
+      <VisibilityParameter>IncludeBreakdown</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>EndHour</ParameterName>
+      <DataType>Integer</DataType>
+      <UserPrompt>End Time:</UserPrompt>
+      <HintHelp>Specify the end time for a specific period during the day on which to report.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>18</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>19</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>117</DisplayOrder>
+      <VisibilityParameter>IncludeBreakdown</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>WeekType</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Days:</UserPrompt>
+      <HintHelp>Select the days of the week to include.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Weekday</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>1</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>20</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>118</DisplayOrder>
+      <VisibilityParameter>IncludeBreakdown</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>FailedLimitText</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Auto-Add Summary Text:</UserPrompt>
+      <HintHelp>Specify the text to explain why a summary was automatically included for a section. Note: To leave out the Auto-Add Summary Text, enter a single space.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>Da dieser Abschnitt nicht unsere Erwartungen erfüllt, wurden dem Bericht weitere Details automatisch hinzugefügt.</DefaultValue>
+      <AvailableValues>
+      </AvailableValues>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>1</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>16</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>14</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+  </RMReportParameters>
+</RMReport>

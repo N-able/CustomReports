@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<RMReport>
+  <RMReportProperties>
+    <ReportDescription>
+    </ReportDescription>
+    <Page>custom_report</Page>
+    <HelpKey>RC_CR</HelpKey>
+  </RMReportProperties>
+  <RMReportParameters>
+    <RMParameter>
+      <ParameterName>SOCustomerID</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Service Organization:</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>0</HasDefaultValue>
+      <DefaultValue>
+      </DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>22</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>0</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+    <RMParameter>
+      <ParameterName>StaleThreshold</ParameterName>
+      <DataType>String</DataType>
+      <UserPrompt>Show devices that have not checked-in over X days</UserPrompt>
+      <HintHelp>No hint help provided.</HintHelp>
+      <HasDefaultValue>1</HasDefaultValue>
+      <DefaultValue>0</DefaultValue>
+      <AllowNulls>0</AllowNulls>
+      <AllowBlank>0</AllowBlank>
+      <MultiValues>0</MultiValues>
+      <Hidden>0</Hidden>
+      <ControlID>13</ControlID>
+      <ParentParameterID>-1</ParentParameterID>
+      <DisplayOrder>1</DisplayOrder>
+      <VisibilityParameter>-1</VisibilityParameter>
+      <ValidationGroup>
+      </ValidationGroup>
+      <InsertLineAbove>0</InsertLineAbove>
+    </RMParameter>
+  </RMReportParameters>
+</RMReport>
